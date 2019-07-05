@@ -73,6 +73,8 @@ public class telaPrincipal extends javax.swing.JFrame {
         dsScriptSaida = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         btAtualiza = new javax.swing.JToggleButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        checkBoxQuebra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerador de logs");
@@ -153,6 +155,8 @@ public class telaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        checkBoxQuebra.setText("QuebraLinha");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -185,9 +189,16 @@ public class telaPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btAddVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btRemoveVariavel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(jCheckBox1))
+                                    .addComponent(checkBoxQuebra)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btAddVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btRemoveVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(jLabel4)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -224,6 +235,10 @@ public class telaPrincipal extends javax.swing.JFrame {
                         .addComponent(btAddVariavel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btRemoveVariavel)
+                        .addGap(4, 4, 4)
+                        .addComponent(checkBoxQuebra)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -231,7 +246,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                 .addComponent(btnGerar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(10, 10, 10)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
@@ -334,9 +349,11 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton btAtualiza;
     private javax.swing.JButton btRemoveVariavel;
     private javax.swing.JButton btnGerar;
+    private javax.swing.JLabel checkBoxQuebra;
     private javax.swing.JTextArea dsCreateTable;
     private javax.swing.JTextArea dsScriptOriginal;
     private javax.swing.JTextArea dsScriptSaida;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -386,9 +403,11 @@ public class telaPrincipal extends javax.swing.JFrame {
     }
 
     private String montaVariavelLog() {
-        String vars = "|| 'linha:' || $$plsql_line";
+        String quebraLinha =  jCheckBox1.isSelected()? "||  CHR(10)" : " ";
+        
+        String vars = "|| ' linha:' || $$plsql_line " + quebraLinha;
         for (String objs : nomeObjetos) {
-            vars = vars + " || '| " + objs + ": ' || " + objs + "";
+            vars = vars + " || '| " + objs + ": ' || " + objs + quebraLinha;
         }
         return "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (('" + nvl(nmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate);";
     }
