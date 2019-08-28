@@ -51,6 +51,7 @@ public class telaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         dsScriptOriginal = new javax.swing.JTextArea();
@@ -73,8 +74,24 @@ public class telaPrincipal extends javax.swing.JFrame {
         dsScriptSaida = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         btAtualiza = new javax.swing.JToggleButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jrbSemMask = new javax.swing.JRadioButton();
+        jrBMaskCompleta = new javax.swing.JRadioButton();
+        jrbDias = new javax.swing.JRadioButton();
+        jLabel8 = new javax.swing.JLabel();
+        jrbHoras = new javax.swing.JRadioButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtNmUsuarioP = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jchboxQuebraLinha = new javax.swing.JCheckBox();
         checkBoxQuebra = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        checkBoxQuebra1 = new javax.swing.JLabel();
+        jchboxCommitInsert = new javax.swing.JCheckBox();
+        jSeparator5 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerador de logs");
@@ -124,6 +141,11 @@ public class telaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Nome da tabela de log (Exemplo : SO180000)");
 
         jLabel3.setText("Made by Eduardo Felipe dos Santos.");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         jLabel4.setText("Variáveis para incluir nos logs");
 
@@ -154,8 +176,6 @@ public class telaPrincipal extends javax.swing.JFrame {
                 btAtualizaActionPerformed(evt);
             }
         });
-
-        checkBoxQuebra.setText("QuebraLinha");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -188,23 +208,18 @@ public class telaPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(14, 14, 14)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(21, 21, 21)
-                                        .addComponent(jCheckBox1))
-                                    .addComponent(checkBoxQuebra)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btAddVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btRemoveVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addComponent(jLabel4)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel3))
+                                    .addComponent(btAddVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btRemoveVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(16, 16, 16))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(8, 8, 8))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -235,10 +250,6 @@ public class telaPrincipal extends javax.swing.JFrame {
                         .addComponent(btAddVariavel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btRemoveVariavel)
-                        .addGap(4, 4, 4)
-                        .addComponent(checkBoxQuebra)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -253,17 +264,140 @@ public class telaPrincipal extends javax.swing.JFrame {
                 .addGap(6, 6, 6))
         );
 
+        buttonGroup1.add(jrbSemMask);
+        jrbSemMask.setSelected(true);
+        jrbSemMask.setText("Sem máscara");
+
+        buttonGroup1.add(jrBMaskCompleta);
+        jrBMaskCompleta.setText("dd/mm/yyyy h24:mi:ss");
+
+        buttonGroup1.add(jrbDias);
+        jrbDias.setText("dd/mm/yyyy");
+
+        jLabel8.setText("Máscara para datas");
+
+        buttonGroup1.add(jrbHoras);
+        jrbHoras.setText("h24:mi:ss");
+
+        jLabel9.setText("Cair no log quando");
+
+        jLabel10.setText("NM_USUARIO_P  for:");
+
+        jLabel11.setText("(Vazio para nada)");
+
+        jchboxQuebraLinha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jchboxQuebraLinhaActionPerformed(evt);
+            }
+        });
+
+        checkBoxQuebra.setText("Quebra Linha");
+
+        checkBoxQuebra1.setText("Commit depois insert");
+
+        jchboxCommitInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jchboxCommitInsertActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jrBMaskCompleta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGap(9, 9, 9)
+                                            .addComponent(jLabel8))
+                                        .addComponent(jrbSemMask, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jrbDias, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jrbHoras, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel10)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel11))))
+                                .addGap(0, 10, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(txtNmUsuarioP)
+                                .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(checkBoxQuebra)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator4)
+                            .addComponent(jSeparator5)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(checkBoxQuebra1)
+                                .addGap(22, 22, 22))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jchboxCommitInsert)
+                                .addGap(62, 62, 62))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jchboxQuebraLinha)
+                                .addGap(62, 62, 62))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbSemMask)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrBMaskCompleta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbDias)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbHoras)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNmUsuarioP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkBoxQuebra)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jchboxQuebraLinha)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkBoxQuebra1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jchboxCommitInsert)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -302,6 +436,20 @@ public class telaPrincipal extends javax.swing.JFrame {
         System.out.println(stringLog);
         dsScriptSaida.setText(textoOriginal.replace(" then", " then \n " + stringLog));
     }//GEN-LAST:event_btnGerarActionPerformed
+
+    private void jchboxQuebraLinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchboxQuebraLinhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jchboxQuebraLinhaActionPerformed
+
+    private void jchboxCommitInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchboxCommitInsertActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jchboxCommitInsertActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        if(evt.getClickCount() == 10){
+            Ee.inicia();
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -349,26 +497,43 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton btAtualiza;
     private javax.swing.JButton btRemoveVariavel;
     private javax.swing.JButton btnGerar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel checkBoxQuebra;
+    private javax.swing.JLabel checkBoxQuebra1;
     private javax.swing.JTextArea dsCreateTable;
     private javax.swing.JTextArea dsScriptOriginal;
     private javax.swing.JTextArea dsScriptSaida;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JCheckBox jchboxCommitInsert;
+    private javax.swing.JCheckBox jchboxQuebraLinha;
+    private javax.swing.JRadioButton jrBMaskCompleta;
+    private javax.swing.JRadioButton jrbDias;
+    private javax.swing.JRadioButton jrbHoras;
+    private javax.swing.JRadioButton jrbSemMask;
     private javax.swing.JList listaVariaveis;
     private javax.swing.JTextField nmObjeto;
     private javax.swing.JTextField nmTabelaLog;
+    private javax.swing.JTextField txtNmUsuarioP;
     // End of variables declaration//GEN-END:variables
 
     public void atualizaLista() {
@@ -403,12 +568,39 @@ public class telaPrincipal extends javax.swing.JFrame {
     }
 
     private String montaVariavelLog() {
-        String quebraLinha =  jCheckBox1.isSelected()? "||  CHR(10)" : " ";
-        
+        String quebraLinha = jchboxQuebraLinha.isSelected() ? "||  CHR(10)" : " ";
+
         String vars = "|| ' linha:' || $$plsql_line " + quebraLinha;
         for (String objs : nomeObjetos) {
-            vars = vars + " || '| " + objs + ": ' || " + objs + quebraLinha;
+            vars = vars + " || '| " + objs + ": ' || " + montaValor(objs) + quebraLinha;
         }
-        return "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (('" + nvl(nmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate);";
+        //return ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty()) ? "if(nm_usuario_p = '" + txtNmUsuarioP.getText() + "') then " : "") + "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (('" + nvl(nmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate)" + (this.jchboxCommitInsert.isSelected() ? ";commit" : "") + ";" + ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty()) ? "end if;" : "");
+        String retorno = "";
+        if ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty())) {
+            retorno += "if(nm_usuario_p = '" + txtNmUsuarioP.getText() + "') then ";
+        }
+        retorno += "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (('" + nvl(nmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate)";
+        if (this.jchboxCommitInsert.isSelected()) {
+            retorno += ";commit";
+        }
+        retorno += ";";
+        if ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty())) {
+            retorno += "end if;";
+        }
+        return retorno;
+    }
+
+    private String montaValor(String var) {
+        String retorno = var != null ? var.toUpperCase() : null;
+        if (retorno != null && retorno.startsWith("DT_") && (retorno.endsWith("_P") || retorno.endsWith("_W"))) {
+            if (this.jrBMaskCompleta.isSelected()) {
+                retorno = "to_char(" + var + ",'dd/mm/yyyy hh24:mi:ss')";
+            } else if (this.jrbDias.isSelected()) {
+                retorno = "to_char(" + var + ",'dd/mm/yyyy')";
+            } else if (this.jrbHoras.isSelected()) {
+                retorno = "to_char(" + var + ",'hh24:mi:ss')";
+            }
+        }
+        return retorno;
     }
 }
