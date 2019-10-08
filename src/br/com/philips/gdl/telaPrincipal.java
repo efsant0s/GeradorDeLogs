@@ -23,10 +23,17 @@ public class telaPrincipal extends javax.swing.JFrame {
     }
     private static List<String> nomeObjetos = new ArrayList<String>();
     private String dsNomeTabelaLog = "SO";
-    private String dsScriptTabelaLog = "CREATE	TABLE	" + dsNomeTabelaLog + " (\n"
+    private String dsScriptTabelaLog 
+            = "CREATE SEQUENCE " + dsNomeTabelaLog + "_seq START WITH 1; \n"
+            + "CREATE TABLE " + dsNomeTabelaLog + " (\n"
+            + "ID           NUMBER(10)    DEFAULT " + dsNomeTabelaLog + "_seq.nextval NOT NULL,\n"
             + "	DS_LOG VARCHAR2(4000),\n"
-            + "	DT_DATA DATE);";
-
+            + "	DT_DATA DATE);"
+            + "ALTER TABLE " + dsNomeTabelaLog + " ADD (\n"
+            + "CONSTRAINT " + dsNomeTabelaLog + "_pk PRIMARY KEY (ID));";
+  
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,9 +41,13 @@ public class telaPrincipal extends javax.swing.JFrame {
      */
     public void atualizaScript() {
         dsNomeTabelaLog = nvl(nmTabelaLog.getText(), "SO");
-        dsScriptTabelaLog = "CREATE TABLE " + nvl(dsNomeTabelaLog, "SO") + " (\n"
-                + " DS_LOG VARCHAR2(4000),\n"
-                + " DT_DATA DATE);";
+        dsScriptTabelaLog = "CREATE SEQUENCE " + dsNomeTabelaLog + "_seq START WITH 1; \n"
+            + "CREATE TABLE " + dsNomeTabelaLog + " (\n"
+            + "ID           NUMBER(10)    DEFAULT " + dsNomeTabelaLog + "_seq.nextval NOT NULL,\n"
+            + "	DS_LOG VARCHAR2(4000),\n"
+            + "	DT_DATA DATE);"
+            + "ALTER TABLE " + dsNomeTabelaLog + " ADD (\n"
+            + "CONSTRAINT " + dsNomeTabelaLog + "_pk PRIMARY KEY (ID));";
         dsCreateTable.setText(dsScriptTabelaLog);
     }
 
@@ -435,7 +446,10 @@ public class telaPrincipal extends javax.swing.JFrame {
         }
         String stringLog = montaVariavelLog();
         System.out.println(stringLog);
-        dsScriptSaida.setText(textoOriginal.replace(" then", " then \n " + stringLog));
+        dsScriptSaida.setText(textoOriginal.replace("then", " then \n " + stringLog));
+        dsScriptSaida.setText(dsScriptSaida.getText().replace("THEN", " THEN \n " + stringLog));
+        dsScriptSaida.setText(dsScriptSaida.getText().replace("else", " else \n " + stringLog));
+        dsScriptSaida.setText(dsScriptSaida.getText().replace("ELSE", " ELSE \n " + stringLog));
     }//GEN-LAST:event_btnGerarActionPerformed
 
     private void jchboxQuebraLinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchboxQuebraLinhaActionPerformed
@@ -447,7 +461,7 @@ public class telaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jchboxCommitInsertActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        if(evt.getClickCount() == 10){
+        if (evt.getClickCount() == 10) {
             Ee.inicia();
         }
     }//GEN-LAST:event_jLabel3MouseClicked
@@ -580,7 +594,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         if ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty())) {
             retorno += "if(nm_usuario_p = '" + txtNmUsuarioP.getText() + "') then ";
         }
-        retorno += "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (('" + nvl(nmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate)";
+        retorno += "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeTabelaLog + "_seq.nextval,('" + nvl(nmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate)";
         if (this.jchboxCommitInsert.isSelected()) {
             retorno += ";commit";
         }
