@@ -23,17 +23,15 @@ public class telaPrincipal extends javax.swing.JFrame {
     }
     private static List<String> nomeObjetos = new ArrayList<String>();
     private String dsNomeTabelaLog = "SO";
-    private String dsScriptTabelaLog 
+    private String dsScriptTabelaLog
             = "CREATE SEQUENCE " + dsNomeTabelaLog + "_seq START WITH 1; \n"
             + "CREATE TABLE " + dsNomeTabelaLog + " (\n"
-            + "ID           NUMBER(10)    DEFAULT " + dsNomeTabelaLog + "_seq.nextval NOT NULL,\n"
+            + "ID           NUMBER(10),\n"
             + "	DS_LOG VARCHAR2(4000),\n"
             + "	DT_DATA DATE);"
             + "ALTER TABLE " + dsNomeTabelaLog + " ADD (\n"
             + "CONSTRAINT " + dsNomeTabelaLog + "_pk PRIMARY KEY (ID));";
-  
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,13 +40,18 @@ public class telaPrincipal extends javax.swing.JFrame {
     public void atualizaScript() {
         dsNomeTabelaLog = nvl(nmTabelaLog.getText(), "SO");
         dsScriptTabelaLog = "CREATE SEQUENCE " + dsNomeTabelaLog + "_seq START WITH 1; \n"
-            + "CREATE TABLE " + dsNomeTabelaLog + " (\n"
-            + "ID           NUMBER(10)    DEFAULT " + dsNomeTabelaLog + "_seq.nextval NOT NULL,\n"
-            + "	DS_LOG VARCHAR2(4000),\n"
-            + "	DT_DATA DATE);"
-            + "ALTER TABLE " + dsNomeTabelaLog + " ADD (\n"
-            + "CONSTRAINT " + dsNomeTabelaLog + "_pk PRIMARY KEY (ID));";
+                + "CREATE TABLE " + dsNomeTabelaLog + " (\n"
+                + "ID           NUMBER(10),\n"
+                + "	DS_LOG VARCHAR2(4000),\n"
+                + "	DT_DATA DATE);"
+                + "ALTER TABLE " + dsNomeTabelaLog + " ADD (\n"
+                + "CONSTRAINT " + dsNomeTabelaLog + "_pk PRIMARY KEY (ID));";
         dsCreateTable.setText(dsScriptTabelaLog);
+
+        String dsScriptExclusaoTabela = "DROP SEQUENCE " + dsNomeTabelaLog + "_seq;\n"
+                + "truncate table  " + dsNomeTabelaLog + ";\n"
+                + "drop table  " + dsNomeTabelaLog + ";";
+        dsScriptLimpar.setText(dsScriptExclusaoTabela);
     }
 
     public static String nvl(String value, String alternateValue) {
@@ -103,10 +106,21 @@ public class telaPrincipal extends javax.swing.JFrame {
         checkBoxQuebra1 = new javax.swing.JLabel();
         jchboxCommitInsert = new javax.swing.JCheckBox();
         jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jchboxStackTrace = new javax.swing.JCheckBox();
+        checkBoxQuebra2 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        dsScriptLimpar = new javax.swing.JTextArea();
+        checkBoxQuebra3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerador de logs");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         dsScriptOriginal.setColumns(20);
         dsScriptOriginal.setRows(5);
@@ -222,11 +236,9 @@ public class telaPrincipal extends javax.swing.JFrame {
                                 .addGap(14, 14, 14)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btAddVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btRemoveVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(16, 16, 16))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(8, 8, 8))))
+                                    .addComponent(btRemoveVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4))
+                        .addGap(16, 16, 16))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -312,61 +324,60 @@ public class telaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jchboxStackTrace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jchboxStackTraceActionPerformed(evt);
+            }
+        });
+
+        checkBoxQuebra2.setText("Incluir StackTrace");
+
+        dsScriptLimpar.setColumns(20);
+        dsScriptLimpar.setRows(5);
+        jScrollPane5.setViewportView(dsScriptLimpar);
+
+        checkBoxQuebra3.setText("Deletar tabela e sequences");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jrBMaskCompleta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jrbSemMask, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jrbDias, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jrbHoras, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(checkBoxQuebra1)
+                            .addComponent(checkBoxQuebra)
+                            .addComponent(checkBoxQuebra2)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel8))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNmUsuarioP, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3)
+                            .addComponent(jSeparator4)
+                            .addComponent(jSeparator5)
+                            .addComponent(jSeparator6)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(checkBoxQuebra3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jrBMaskCompleta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGap(9, 9, 9)
-                                            .addComponent(jLabel8))
-                                        .addComponent(jrbSemMask, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jrbDias, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jrbHoras, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(13, 13, 13)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel11))))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(txtNmUsuarioP)
-                                .addContainerGap())))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(checkBoxQuebra)
-                        .addGap(0, 46, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(checkBoxQuebra1)
-                                .addGap(22, 22, 22))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jchboxCommitInsert)
-                                .addGap(65, 65, 65))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jchboxQuebraLinha)
-                                .addGap(65, 65, 65))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(0, 113, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jchboxStackTrace)
+                                    .addComponent(jchboxCommitInsert)
+                                    .addComponent(jchboxQuebraLinha))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -396,19 +407,32 @@ public class telaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNmUsuarioP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checkBoxQuebra)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jchboxQuebraLinha)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(checkBoxQuebra)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jchboxQuebraLinha)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jchboxCommitInsert)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(checkBoxQuebra1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checkBoxQuebra1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jchboxCommitInsert)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(checkBoxQuebra2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkBoxQuebra3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jchboxStackTrace))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -466,6 +490,14 @@ public class telaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void jchboxStackTraceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchboxStackTraceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jchboxStackTraceActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+       JOptionPane.showMessageDialog(null, "Não esqueça de compilar o objeto original sem logs, e deletar as tabelas e sequences criadas!", "Aviso", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
@@ -515,7 +547,10 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel checkBoxQuebra;
     private javax.swing.JLabel checkBoxQuebra1;
+    private javax.swing.JLabel checkBoxQuebra2;
+    private javax.swing.JLabel checkBoxQuebra3;
     private javax.swing.JTextArea dsCreateTable;
+    private javax.swing.JTextArea dsScriptLimpar;
     private javax.swing.JTextArea dsScriptOriginal;
     private javax.swing.JTextArea dsScriptSaida;
     private javax.swing.JLabel jLabel1;
@@ -534,13 +569,16 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JCheckBox jchboxCommitInsert;
     private javax.swing.JCheckBox jchboxQuebraLinha;
+    private javax.swing.JCheckBox jchboxStackTrace;
     private javax.swing.JRadioButton jrBMaskCompleta;
     private javax.swing.JRadioButton jrbDias;
     private javax.swing.JRadioButton jrbHoras;
@@ -587,7 +625,10 @@ public class telaPrincipal extends javax.swing.JFrame {
 
         String vars = "|| ' linha:' || $$plsql_line " + quebraLinha;
         for (String objs : nomeObjetos) {
-            vars = vars + " || '| " + objs + ": ' || " + montaValor(objs) + quebraLinha;
+            vars += " || '| " + objs + ": ' || " + montaValor(objs) + quebraLinha;
+        }
+        if (jchboxStackTrace.isSelected()) {
+            vars += " || ' | Stacktrace: '||  CHR(10) || SUBSTR(DBMS_UTILITY.FORMAT_CALL_STACK,1,2000)";
         }
         //return ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty()) ? "if(nm_usuario_p = '" + txtNmUsuarioP.getText() + "') then " : "") + "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (('" + nvl(nmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate)" + (this.jchboxCommitInsert.isSelected() ? ";commit" : "") + ";" + ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty()) ? "end if;" : "");
         String retorno = "";
