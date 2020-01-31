@@ -5,13 +5,23 @@
  */
 package br.com.philips.gdl;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -25,16 +35,26 @@ public class telaPrincipal extends javax.swing.JFrame {
     public telaPrincipal() {
         initComponents();
     }
-    private static List<String> nomeObjetos = new ArrayList<String>();
-    private String dsNomeTabelaLog = "SO";
-    private String dsScriptTabelaLog
-            = "CREATE SEQUENCE " + dsNomeTabelaLog + "_seq START WITH 1; \n"
-            + "CREATE TABLE " + dsNomeTabelaLog + " (\n"
+    private static List<String> objetosListaAtributos = new ArrayList<String>();
+    private static LinkedHashMap<String, String> tabelaListaAtributos = new LinkedHashMap();
+    private String dsNomeObjetoTabelaLog = "SO";
+    private String dsNomeTabelaTabelaLog = "SO";
+    private String dsScriptObjetoTabelaLog
+            = "CREATE SEQUENCE " + dsNomeObjetoTabelaLog + "_seq START WITH 1; \n"
+            + "CREATE TABLE " + dsNomeObjetoTabelaLog + " (\n"
             + "ID           NUMBER(10),\n"
             + "	DS_LOG VARCHAR2(4000),\n"
             + "	DT_DATA DATE);"
-            + "ALTER TABLE " + dsNomeTabelaLog + " ADD (\n"
-            + "CONSTRAINT " + dsNomeTabelaLog + "_pk PRIMARY KEY (ID));";
+            + "ALTER TABLE " + dsNomeObjetoTabelaLog + " ADD (\n"
+            + "CONSTRAINT " + dsNomeObjetoTabelaLog + "_pk PRIMARY KEY (ID));";
+    private String dsScriptTabelaTabelaLog
+            = "CREATE SEQUENCE " + dsNomeTabelaTabelaLog + "_seq START WITH 1; \n"
+            + "CREATE TABLE " + dsNomeTabelaTabelaLog + " (\n"
+            + "ID           NUMBER(10),\n"
+            + "	DS_LOG VARCHAR2(4000),\n"
+            + "	DT_DATA DATE);"
+            + "ALTER TABLE " + dsNomeTabelaTabelaLog + " ADD (\n"
+            + "CONSTRAINT " + dsNomeTabelaTabelaLog + "_pk PRIMARY KEY (ID));";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,6 +66,7 @@ public class telaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         tpAbaPane = new javax.swing.JTabbedPane();
         tbAbaObjeto = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,7 +74,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         objetoBtAddVariavel = new javax.swing.JToggleButton();
         objetoBtRemoveVariavel = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listaVariaveis = new javax.swing.JList();
+        objetoListaVariaveis = new javax.swing.JList();
         objetoNmObjeto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         objetoNmTabelaLog = new javax.swing.JTextField();
@@ -96,27 +117,23 @@ public class telaPrincipal extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         tbAbaTabela = new javax.swing.JPanel();
         jSeparator8 = new javax.swing.JSeparator();
-        checkBoxQuebra5 = new javax.swing.JLabel();
-        checkBoxQuebra7 = new javax.swing.JLabel();
-        jchboxStackTrace1 = new javax.swing.JCheckBox();
-        jchboxQuebraLinha1 = new javax.swing.JCheckBox();
         jSeparator11 = new javax.swing.JSeparator();
         tabelaTxtNmUsuario = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
-        tabelaJrbHoras1 = new javax.swing.JRadioButton();
-        tabelaJrbDias1 = new javax.swing.JRadioButton();
-        tabelaJrBMaskCompleta1 = new javax.swing.JRadioButton();
-        tabelaJrbSemMask1 = new javax.swing.JRadioButton();
+        tabelaJrbHoras = new javax.swing.JRadioButton();
+        tabelaJrbDias = new javax.swing.JRadioButton();
+        tabelaJrBMaskCompleta = new javax.swing.JRadioButton();
+        tabelaJrbSemMask = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
         tabelaBtRemoveVariavel = new javax.swing.JButton();
         tabelaBtAddVariavel = new javax.swing.JToggleButton();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tabelaListVariaveis = new javax.swing.JList();
-        nmTabelaLog1 = new javax.swing.JTextField();
+        tabelaNmTabelaLog = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         tabelaBtAtualiza = new javax.swing.JToggleButton();
         jLabel19 = new javax.swing.JLabel();
@@ -132,9 +149,13 @@ public class telaPrincipal extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         tabelaDsDeleteTable = new javax.swing.JTextArea();
         jLabel22 = new javax.swing.JLabel();
-        jSeparator10 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        tabelaNmChavePrimaria = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        tabelaTxtChavePrimaria = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        tabelaLabel1 = new javax.swing.JLabel();
+        nmTriggerTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerador de logs");
@@ -163,13 +184,13 @@ public class telaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        listaVariaveis.setModel(new javax.swing.AbstractListModel() {
-            String variaveis[] = nomeObjetos.toArray(new String[0]);
-            //nomeObjetos.toArray(new String[nomeObjetos.size()]);
+        objetoListaVariaveis.setModel(new javax.swing.AbstractListModel() {
+            String variaveis[] = objetosListaAtributos.toArray(new String[0]);
+            //nomeObjetos.toArray(new String[objetosListaAtributos.size()]);
             public int getSize() { return variaveis.length; }
             public Object getElementAt(int i) { return variaveis[i]; }
         });
-        jScrollPane2.setViewportView(listaVariaveis);
+        jScrollPane2.setViewportView(objetoListaVariaveis);
 
         objetoNmObjeto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,6 +271,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         checkBoxQuebra.setText("Quebra Linha");
 
         buttonGroup1.add(objetoJrbSemMask);
+        objetoJrbSemMask.setSelected(true);
         objetoJrbSemMask.setText("Sem máscara");
 
         jchboxCommitInsert.addActionListener(new java.awt.event.ActionListener() {
@@ -378,7 +400,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel6)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(objetoBtnGerar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -444,37 +466,22 @@ public class telaPrincipal extends javax.swing.JFrame {
 
         tpAbaPane.addTab("Objetos", tbAbaObjeto);
 
-        checkBoxQuebra5.setText("Incluir StackTrace");
-
-        checkBoxQuebra7.setText("Quebra Linha");
-
-        jchboxStackTrace1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jchboxStackTrace1ActionPerformed(evt);
-            }
-        });
-
-        jchboxQuebraLinha1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jchboxQuebraLinha1ActionPerformed(evt);
-            }
-        });
-
         jLabel12.setText("(Vazio para nada)");
 
         jLabel14.setText("Cair no log quando NM_USUARIO  for:");
 
-        buttonGroup1.add(tabelaJrbHoras1);
-        tabelaJrbHoras1.setText("h24:mi:ss");
+        buttonGroup2.add(tabelaJrbHoras);
+        tabelaJrbHoras.setText("h24:mi:ss");
 
-        buttonGroup1.add(tabelaJrbDias1);
-        tabelaJrbDias1.setText("dd/mm/yyyy");
+        buttonGroup2.add(tabelaJrbDias);
+        tabelaJrbDias.setText("dd/mm/yyyy");
 
-        buttonGroup1.add(tabelaJrBMaskCompleta1);
-        tabelaJrBMaskCompleta1.setText("dd/mm/yyyy h24:mi:ss");
+        buttonGroup2.add(tabelaJrBMaskCompleta);
+        tabelaJrBMaskCompleta.setSelected(true);
+        tabelaJrBMaskCompleta.setText("dd/mm/yyyy h24:mi:ss");
 
-        buttonGroup1.add(tabelaJrbSemMask1);
-        tabelaJrbSemMask1.setText("Sem máscara");
+        buttonGroup2.add(tabelaJrbSemMask);
+        tabelaJrbSemMask.setText("Sem máscara");
 
         jLabel15.setText("Máscara para datas");
 
@@ -495,17 +502,17 @@ public class telaPrincipal extends javax.swing.JFrame {
         jLabel16.setText("Variáveis da tabela para incluir nos logs");
 
         tabelaListVariaveis.setModel(new javax.swing.AbstractListModel() {
-            String variaveis[] = nomeObjetos.toArray(new String[0]);
-            //nomeObjetos.toArray(new String[nomeObjetos.size()]);
+            String variaveis[] = objetosListaAtributos.toArray(new String[0]);
+            //nomeObjetos.toArray(new String[objetosListaAtributos.size()]);
             public int getSize() { return variaveis.length; }
             public Object getElementAt(int i) { return variaveis[i]; }
         });
         jScrollPane7.setViewportView(tabelaListVariaveis);
 
-        nmTabelaLog1.setText("SO");
-        nmTabelaLog1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tabelaNmTabelaLog.setText("SO");
+        tabelaNmTabelaLog.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                nmTabelaLog1KeyTyped(evt);
+                tabelaNmTabelaLogKeyTyped(evt);
             }
         });
 
@@ -558,9 +565,32 @@ public class telaPrincipal extends javax.swing.JFrame {
 
         jLabel22.setText("Script para excluir a tabela de logs e a trigger criada");
 
-        jTextField1.setText("NR_SEQUENCIA");
+        tabelaNmChavePrimaria.setText("NR_SEQUENCIA");
+        tabelaNmChavePrimaria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tabelaNmChavePrimariaFocusLost(evt);
+            }
+        });
+        tabelaNmChavePrimaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tabelaNmChavePrimariaActionPerformed(evt);
+            }
+        });
 
         jLabel17.setText("Chave primária, (deixar vazio se mais de uma).");
+
+        jLabel23.setText("(Vazio para nada)");
+
+        jLabel24.setText("Cair apenas quando a chave primária for:");
+
+        tabelaLabel1.setText("Nome da Trigger, EX: Temp_Trigg_SO2044");
+
+        nmTriggerTxt.setText("Temp_Trigger_");
+        nmTriggerTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nmTriggerTxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tbAbaTabelaLayout = new javax.swing.GroupLayout(tbAbaTabela);
         tbAbaTabela.setLayout(tbAbaTabelaLayout);
@@ -569,70 +599,64 @@ public class telaPrincipal extends javax.swing.JFrame {
             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
+                        .addComponent(tabelaNmTabelaLog)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tabelaBtAtualiza))
+                    .addComponent(jScrollPane10)
+                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel22))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                         .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nmTabelaTxt)
-                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
-                                        .addComponent(tabelaBtAddVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tabelaBtRemoveVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)
-                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel17))
-                                        .addGap(0, 6, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jSeparator12)
-                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jLabel14)
-                                            .addComponent(tabelaTxtNmUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))
-                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(checkBoxQuebra7)
-                                            .addComponent(checkBoxQuebra5))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jchboxStackTrace1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jchboxQuebraLinha1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tabelaJrBMaskCompleta1)
-                                            .addComponent(tabelaJrbSemMask1)
-                                            .addComponent(tabelaJrbDias1)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel15)
-                                            .addComponent(tabelaJrbHoras1))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE))
-                                    .addComponent(jSeparator8)
-                                    .addComponent(jSeparator10)))
-                            .addComponent(jScrollPane8)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
-                                .addComponent(nmTabelaLog1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tabelaBtAtualiza))
-                            .addComponent(jScrollPane10)
+                                .addComponent(tabelaBtAddVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tabelaBtRemoveVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(tabelaNmChavePrimaria)
                             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel21)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel22))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                        .addComponent(tabelaLabel)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                .addComponent(tabelaLabel)
+                                .addGap(164, 164, 164)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator12)
+                            .addComponent(jSeparator8)
+                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14)
+                                    .addComponent(tabelaTxtNmUsuario)
+                                    .addComponent(jLabel24)
+                                    .addComponent(tabelaTxtChavePrimaria)))
+                            .addComponent(nmTriggerTxt)
+                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tabelaJrBMaskCompleta)
+                                    .addComponent(tabelaJrbSemMask)
+                                    .addComponent(tabelaJrbDias)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel15)
+                                    .addComponent(tabelaJrbHoras)
+                                    .addComponent(jLabel23)
+                                    .addComponent(tabelaLabel1))
+                                .addGap(0, 0, 0)))))
+                .addGap(18, 18, 18)
+                .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
@@ -642,77 +666,79 @@ public class telaPrincipal extends javax.swing.JFrame {
             tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tabelaLabel)
-                    .addComponent(jLabel20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane9)
+                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                        .addComponent(nmTabelaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tabelaLabel)
+                            .addComponent(jLabel20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane9)
                             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel16)
+                                .addComponent(nmTabelaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel17)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tabelaNmChavePrimaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel16)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(tabelaBtRemoveVariavel)
+                                            .addComponent(tabelaBtAddVariavel))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tabelaJrbSemMask)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tabelaJrBMaskCompleta)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tabelaJrbDias)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tabelaJrbHoras)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel14)
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jLabel12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tabelaTxtNmUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel24)
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jLabel23)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(tabelaTxtChavePrimaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tabelaBtRemoveVariavel)
-                                    .addComponent(tabelaBtAddVariavel))
+                                    .addComponent(tabelaNmTabelaLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tabelaBtAtualiza))
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                .addComponent(jLabel15)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tabelaJrbSemMask1)
+                                .addComponent(jLabel22)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tabelaJrBMaskCompleta1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tabelaJrbDias1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tabelaJrbHoras1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel14)
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tabelaTxtNmUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(checkBoxQuebra7)
-                                    .addComponent(jchboxQuebraLinha1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(checkBoxQuebra5)
-                                    .addComponent(jchboxStackTrace1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel18)
+                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                        .addComponent(tabelaLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nmTabelaLog1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tabelaBtAtualiza))
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(nmTriggerTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel21)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -773,7 +799,7 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         if (evt.getClickCount() == 10) {
-            Ee.inicia();
+            JOptionPane.showMessageDialog(null, "¯\\_(ツ)_/¯");
         }
     }//GEN-LAST:event_jLabel3MouseClicked
 
@@ -782,11 +808,23 @@ public class telaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jchboxStackTraceActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        JOptionPane.showMessageDialog(null, "Não esqueça de compilar o objeto original sem logs, e deletar as tabelas e sequences criadas!", "Aviso", JOptionPane.WARNING_MESSAGE);
+
+        if (JOptionPane.showConfirmDialog(null, "Não esqueça de compilar o objeto original sem logs e deletar as tabelas, triggers e sequences criadas!\nDeseja realmente sair?") != JOptionPane.YES_OPTION) {
+            this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        } else {
+            System.exit(1);
+        }
     }//GEN-LAST:event_formWindowClosing
 
     private void tabelaBtGerarTriggerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabelaBtGerarTriggerActionPerformed
-        // TODO add your handling code here:
+        tabelaAtualizaScript();
+        if (nmTabelaTxt.getText().isEmpty() || nmTriggerTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Você não pode gerar a trigger sem"
+                                                + " o nome da tabela ou sem o nome da trigger!");
+        } else {
+            geraTrigger();
+        }
+
     }//GEN-LAST:event_tabelaBtGerarTriggerActionPerformed
 
     private void nmTabelaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nmTabelaTxtActionPerformed
@@ -794,32 +832,44 @@ public class telaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_nmTabelaTxtActionPerformed
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        // TODO add your handling code here:
+        if (evt.getClickCount() == 10) {
+            JOptionPane.showMessageDialog(null, "¯\\_( ͡° ͜ʖ ͡°)_/¯");
+        }
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void tabelaBtAtualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabelaBtAtualizaActionPerformed
-        // TODO add your handling code here:
+        tabelaAtualizaScript();
     }//GEN-LAST:event_tabelaBtAtualizaActionPerformed
 
-    private void nmTabelaLog1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nmTabelaLog1KeyTyped
+    private void tabelaNmTabelaLogKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaNmTabelaLogKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_nmTabelaLog1KeyTyped
+    }//GEN-LAST:event_tabelaNmTabelaLogKeyTyped
 
     private void tabelaBtAddVariavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabelaBtAddVariavelActionPerformed
-        // TODO add your handling code here:
+        tabelaAdicionaVariavel();
     }//GEN-LAST:event_tabelaBtAddVariavelActionPerformed
 
     private void tabelaBtRemoveVariavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabelaBtRemoveVariavelActionPerformed
-        // TODO add your handling code here:
+        tabelaRemoveVariavel();
     }//GEN-LAST:event_tabelaBtRemoveVariavelActionPerformed
 
-    private void jchboxQuebraLinha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchboxQuebraLinha1ActionPerformed
+    private void nmTriggerTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nmTriggerTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jchboxQuebraLinha1ActionPerformed
+    }//GEN-LAST:event_nmTriggerTxtActionPerformed
 
-    private void jchboxStackTrace1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchboxStackTrace1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jchboxStackTrace1ActionPerformed
+    private void tabelaNmChavePrimariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabelaNmChavePrimariaActionPerformed
+
+    }//GEN-LAST:event_tabelaNmChavePrimariaActionPerformed
+
+    private void tabelaNmChavePrimariaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaNmChavePrimariaFocusLost
+        if (tabelaTxtChavePrimaria.isEnabled() && tabelaNmChavePrimaria.getText().isEmpty()) {
+            tabelaTxtChavePrimaria.setText("");
+            tabelaTxtChavePrimaria.setEnabled(false);
+        } else if (!tabelaTxtChavePrimaria.isEnabled() && !tabelaNmChavePrimaria.getText().isEmpty()) {
+            tabelaTxtChavePrimaria.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_tabelaNmChavePrimariaFocusLost
 
     /**
      * @param args the command line arguments
@@ -856,20 +906,31 @@ public class telaPrincipal extends javax.swing.JFrame {
                 tela = new telaPrincipal();
                 tela.setVisible(true);
                 tela.objetoAtualizaScript();
-                tela.nomeObjetos.add("nm_usuario_p");
+                tela.tabelaAtualizaScript();
+                tela.objetosListaAtributos.add("nm_usuario_p");
                 tela.objetoAtualizaLista();
+                tela.tabelaListaAtributos.put("nr_sequencia", "Number");
+                tela.tabelaListaAtributos.put("nm_usuario", "Varchar2");
+                tela.tabelaAtualizaLista();
+                URL url = System.class.getResource("/br/com/philips/gdl/log.png");
+                try {
+                    java.awt.Image image = ImageIO.read(url);
+                    tela.setIconImage(image);
+                } catch (IOException ex) {
+                    Logger.getLogger(telaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel checkBoxQuebra;
     private javax.swing.JLabel checkBoxQuebra1;
     private javax.swing.JLabel checkBoxQuebra2;
     private javax.swing.JLabel checkBoxQuebra3;
-    private javax.swing.JLabel checkBoxQuebra5;
-    private javax.swing.JLabel checkBoxQuebra7;
     private javax.swing.JTextArea dsScriptOriginal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -886,6 +947,8 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -903,7 +966,6 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
@@ -913,15 +975,11 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JCheckBox jchboxCommitInsert;
     private javax.swing.JCheckBox jchboxQuebraLinha;
-    private javax.swing.JCheckBox jchboxQuebraLinha1;
     private javax.swing.JCheckBox jchboxStackTrace;
-    private javax.swing.JCheckBox jchboxStackTrace1;
-    private javax.swing.JList listaVariaveis;
-    private javax.swing.JTextField nmTabelaLog1;
     private javax.swing.JTextField nmTabelaTxt;
+    private javax.swing.JTextField nmTriggerTxt;
     private javax.swing.JToggleButton objetoBtAddVariavel;
     private javax.swing.JToggleButton objetoBtAtualiza;
     private javax.swing.JButton objetoBtRemoveVariavel;
@@ -933,6 +991,7 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton objetoJrbHoras;
     private javax.swing.JRadioButton objetoJrbMaskCompleta;
     private javax.swing.JRadioButton objetoJrbSemMask;
+    private javax.swing.JList objetoListaVariaveis;
     private javax.swing.JTextField objetoNmObjeto;
     private javax.swing.JTextField objetoNmTabelaLog;
     private javax.swing.JToggleButton tabelaBtAddVariavel;
@@ -942,12 +1001,16 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea tabelaDsCreateTable;
     private javax.swing.JTextArea tabelaDsDeleteTable;
     private javax.swing.JTextArea tabelaDsTrigger;
-    private javax.swing.JRadioButton tabelaJrBMaskCompleta1;
-    private javax.swing.JRadioButton tabelaJrbDias1;
-    private javax.swing.JRadioButton tabelaJrbHoras1;
-    private javax.swing.JRadioButton tabelaJrbSemMask1;
+    private javax.swing.JRadioButton tabelaJrBMaskCompleta;
+    private javax.swing.JRadioButton tabelaJrbDias;
+    private javax.swing.JRadioButton tabelaJrbHoras;
+    private javax.swing.JRadioButton tabelaJrbSemMask;
     private javax.swing.JLabel tabelaLabel;
+    private javax.swing.JLabel tabelaLabel1;
     private javax.swing.JList tabelaListVariaveis;
+    private javax.swing.JTextField tabelaNmChavePrimaria;
+    private javax.swing.JTextField tabelaNmTabelaLog;
+    private javax.swing.JTextField tabelaTxtChavePrimaria;
     private javax.swing.JTextField tabelaTxtNmUsuario;
     private javax.swing.JPanel tbAbaObjeto;
     private javax.swing.JPanel tbAbaTabela;
@@ -955,32 +1018,66 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtNmUsuarioP;
     // End of variables declaration//GEN-END:variables
     public void objetoAtualizaScript() {
-        dsNomeTabelaLog = nvl(objetoNmTabelaLog.getText(), "SO");
-        dsScriptTabelaLog = "CREATE SEQUENCE " + dsNomeTabelaLog + "_seq START WITH 1; \n"
-                + "CREATE TABLE " + dsNomeTabelaLog + " (\n"
+        dsNomeObjetoTabelaLog = nvl(objetoNmTabelaLog.getText(), "SO");
+        dsScriptObjetoTabelaLog = "CREATE SEQUENCE " + dsNomeObjetoTabelaLog + "_seq START WITH 1; \n"
+                + "CREATE TABLE " + dsNomeObjetoTabelaLog + " (\n"
                 + "ID           NUMBER(10),\n"
                 + "	DS_LOG VARCHAR2(4000),\n"
-                + "	DT_DATA DATE);"
-                + "ALTER TABLE " + dsNomeTabelaLog + " ADD (\n"
-                + "CONSTRAINT " + dsNomeTabelaLog + "_pk PRIMARY KEY (ID));";
-        objetoDsCreateTable.setText(dsScriptTabelaLog);
+                + "	DS_STACK VARCHAR2(4000),\n"
+                + "     DT_DATA DATE);\n"
+                + "ALTER TABLE " + dsNomeObjetoTabelaLog + " ADD (\n"
+                + "CONSTRAINT " + dsNomeObjetoTabelaLog + "_pk PRIMARY KEY (ID));";
+        objetoDsCreateTable.setText(dsScriptObjetoTabelaLog);
 
-        String dsScriptExclusaoTabela = "DROP SEQUENCE " + dsNomeTabelaLog + "_seq;\n"
-                + "truncate table  " + dsNomeTabelaLog + ";\n"
-                + "drop table  " + dsNomeTabelaLog + ";";
+        String dsScriptExclusaoTabela = "DROP SEQUENCE " + dsNomeObjetoTabelaLog + "_seq;\n"
+                + "truncate table  " + dsNomeObjetoTabelaLog + ";\n"
+                + "drop table  " + dsNomeObjetoTabelaLog + ";";
         objetoDsScriptLimpar.setText(dsScriptExclusaoTabela);
     }
 
+    public void tabelaAtualizaScript() {
+        dsNomeTabelaTabelaLog = nvl(tabelaNmTabelaLog.getText(), "SO");
+        dsScriptTabelaTabelaLog = "CREATE SEQUENCE " + dsNomeTabelaTabelaLog + "_seq START WITH 1; \n"
+                + "CREATE TABLE " + dsNomeTabelaTabelaLog + " (\n"
+                + "ID           NUMBER(10),\n"
+                + "	DS_LOG VARCHAR2(4000),\n"
+                + "	DS_STACK VARCHAR2(4000),\n"
+                + "     DT_DATA DATE);\n"
+                + "ALTER TABLE " + dsNomeTabelaTabelaLog + " ADD (\n"
+                + "CONSTRAINT " + dsNomeTabelaTabelaLog + "_pk PRIMARY KEY (ID));";
+        tabelaDsCreateTable.setText(dsScriptTabelaTabelaLog);
+
+        String dsScriptExclusaoTabela = "DROP SEQUENCE " + dsNomeTabelaTabelaLog + "_seq;\n"
+                + "truncate table  " + dsNomeTabelaTabelaLog + ";\n"
+                + "drop table  " + dsNomeTabelaTabelaLog + ";\n"
+                + "drop trigger " + getNomeTrigger();
+        tabelaDsDeleteTable.setText(dsScriptExclusaoTabela);
+    }
+
     public static String nvl(String value, String alternateValue) {
-        if (value == null) {
+        if (value == null || value.isEmpty()) {
             return alternateValue;
         }
         return value;
     }
 
     public void objetoAtualizaLista() {
-        listaVariaveis.setModel(new javax.swing.AbstractListModel() {
-            String variaveis[] = nomeObjetos.toArray(new String[0]);
+        objetoListaVariaveis.setModel(new javax.swing.AbstractListModel() {
+            String variaveis[] = objetosListaAtributos.toArray(new String[0]);
+
+            public int getSize() {
+                return variaveis.length;
+            }
+
+            public Object getElementAt(int i) {
+                return variaveis[i];
+            }
+        });
+    }
+
+    private void tabelaAtualizaLista() {
+        tabelaListVariaveis.setModel(new javax.swing.AbstractListModel() {
+            Object variaveis[] = tabelaListaAtributos.keySet().toArray();
 
             public int getSize() {
                 return variaveis.length;
@@ -994,16 +1091,34 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     private void objetoAdicionaVariavel() {
         String valor = nvl(JOptionPane.showInputDialog("Nome da variável"), "ds");
-        this.nomeObjetos.add(valor);
+        this.objetosListaAtributos.add(valor);
         objetoAtualizaLista();
 
     }
 
+    private void tabelaAdicionaVariavel() {
+        String[] lista = janelaVariavel();
+        if (lista != null) {
+            this.tabelaListaAtributos.put(lista[0], lista[1]);
+        }
+        tabelaAtualizaLista();
+    }
+
+    private void tabelaRemoveVariavel() {
+        String valor = (String) tabelaListVariaveis.getSelectedValue();
+        if (valor != null) {
+            if (JOptionPane.showConfirmDialog(null, "Deseja realmente remover essa variável?") == JOptionPane.YES_OPTION) {
+                this.tabelaListaAtributos.remove(valor);
+                tabelaAtualizaLista();
+            }
+        }
+    }
+
     private void objetoRemoveVariavel() {
-        int index = listaVariaveis.getSelectedIndex();
+        int index = objetoListaVariaveis.getSelectedIndex();
         if (index > -1) {
             if (JOptionPane.showConfirmDialog(null, "Deseja realmente remover essa variável?") == JOptionPane.YES_OPTION) {
-                this.nomeObjetos.remove(index);
+                this.objetosListaAtributos.remove(index);
                 objetoAtualizaLista();
             }
         }
@@ -1013,7 +1128,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         String quebraLinha = jchboxQuebraLinha.isSelected() ? "||  CHR(10)" : " ";
 
         String vars = "|| ' linha:' || $$plsql_line " + quebraLinha;
-        for (String objs : nomeObjetos) {
+        for (String objs : objetosListaAtributos) {
             vars += " || '| " + objs + ": ' || " + objetoMontaValor(objs) + quebraLinha;
         }
         if (jchboxStackTrace.isSelected()) {
@@ -1024,7 +1139,11 @@ public class telaPrincipal extends javax.swing.JFrame {
         if ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty())) {
             retorno += "if(nm_usuario_p = '" + txtNmUsuarioP.getText() + "') then ";
         }
-        retorno += "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeTabelaLog + "_seq.nextval,('" + nvl(objetoNmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate)";
+        retorno += "INSERT INTO " + nvl(dsNomeObjetoTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeObjetoTabelaLog + "_seq.nextval,"
+                + "('" + nvl(objetoNmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + "), ";
+
+        retorno += jchboxStackTrace.isSelected() ? "(' | Stacktrace: '||  CHR(10) || SUBSTR(DBMS_UTILITY.FORMAT_CALL_STACK,1,2000))," : "(null),";
+        retorno += "(sysdate))";
         if (this.jchboxCommitInsert.isSelected()) {
             retorno += ";commit";
         }
@@ -1049,6 +1168,30 @@ public class telaPrincipal extends javax.swing.JFrame {
         return retorno;
     }
 
+    private void geraTrigger() {
+        //TODO Não deixar gerar o texto trigger sem o nome da tabela.
+        String trigger = "CREATE  OR REPLACE  TRIGGER " + getNomeTrigger() + "\n"
+                + "AFTER INSERT OR UPDATE\n"
+                + "   ON " + nmTabelaTxt.getText() + "\n"
+                + "    FOR EACH ROW \n"
+                + "\n"
+                + "DECLARE\n"
+                + "     ds_erro_w                               varchar2(2000);\n"
+                + "     ds_stack_w				varchar2(2000);\n"
+                + "     ds_log_w                                varchar2(2000);\n"
+                + "     dt_min_date_w                           date := to_date('30/12/1899 00:00:00', 'dd/mm/yyyy hh24:mi:ss'); \n"
+                + "\n"
+                + "BEGIN\n"
+                + montaLinhasTrigger()
+                + "\n"
+                + montaVerificaoRegistro()
+                + "\n"
+                + montaVerificaoException()
+                + "\n"
+                + "END;";
+        tabelaDsTrigger.setText(trigger);
+    }
+
     private void objetoBtnGerarAction() {
         objetoAtualizaScript();
         String textoOriginal = dsScriptOriginal.getText();
@@ -1064,24 +1207,108 @@ public class telaPrincipal extends javax.swing.JFrame {
         objetoDsScriptSaida.setText(objetoDsScriptSaida.getText().replace("ELSE", " ELSE \n " + stringLog));
     }
 
-    private void janelaVariavel() {
-        JTextField xField = new JTextField(5);
-        JTextField yField = new JTextField(5);
+    private static String[] janelaVariavel() {
+        JComboBox cbTipoVariavel = new javax.swing.JComboBox();
+        cbTipoVariavel.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Varchar2", "Number", "Date"}));
 
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("x:"));
-        myPanel.add(xField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("y:"));
-        myPanel.add(yField);
-
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            System.out.println("x value: " + xField.getText());
-            System.out.println("y value: " + yField.getText());
+        JTextField nomeVariavel = new JTextField();
+        Object[] message = {
+            "Nome atributo:", nomeVariavel,
+            "Tipo:", cbTipoVariavel
+        };
+        int option = JOptionPane.showConfirmDialog(null, message, "Escolha uma opção", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION && !nomeVariavel.getText().trim().isEmpty()) {
+            String[] valores = new String[2];
+            valores[0] = nomeVariavel.getText();
+            valores[1] = cbTipoVariavel.getSelectedItem().toString();
+            return valores;
         }
+        return null;
     }
+
+    private String montaLinhasTrigger() {
+        String retorno = "";
+        for (Map.Entry<String, String> entry : tabelaListaAtributos.entrySet()) {
+            String nome = entry.getKey();
+            String tipo = entry.getValue();
+            if (nome != null && !nome.isEmpty()) {
+
+                if ("Varchar2".equals(tipo)) {
+                    retorno += "    if (nvl(:new." + nome + ",'XPTO') <> nvl(:old." + nome + ",'XPTO')) then\n"
+                            + "         ds_log_w	:= substr(ds_log_w  || ' " + nome + "(' || nvl(:old." + nome + ",'<NULL>') || ' / ' || nvl(:new." + nome + ",'<NULL>')||'); ',1,2000);\n"
+                            + "         ds_log_w	:= substr(ds_log_w  || CHR(10),1,2000);\n"
+                            + "     end if;\n";
+                } else if ("Date".equals(tipo)) {
+                    String formatoData = "to_char(:old." + nome + ",'dd/mm/yyyy hh24:mi:ss')";
+                    String newFormatData = "to_char(:new." + nome + ",'dd/mm/yyyy hh24:mi:ss')";
+                    if (this.tabelaJrBMaskCompleta.isSelected()) {
+                        newFormatData = "to_char(:new." + nome + ",'dd/mm/yyyy hh24:mi:ss')";
+                        formatoData = "to_char(:old." + nome + ",'dd/mm/yyyy hh24:mi:ss')";
+                    } else if (this.tabelaJrbDias.isSelected()) {
+                        newFormatData = "to_char(:new." + nome + ",'dd/mm/yyyy')";
+                        formatoData = "to_char(:old." + nome + ",'dd/mm/yyyy')";
+                    } else if (this.tabelaJrbHoras.isSelected()) {
+                        newFormatData = "to_char(:new." + nome + ",'hh24:mi:ss')";
+                        formatoData = "to_char(:old." + nome + ",'hh24:mi:ss')";
+                    }
+                    retorno += "    if (nvl(:new." + nome + ", dt_min_date_w) <> nvl(:old." + nome + ", dt_min_date_w)) then\n"
+                            + "         ds_log_w	:= substr(ds_log_w  || ' " + nome + "(' || nvl(" + formatoData + ",'<NULL>') || ' / ' || nvl(" + newFormatData + ",'<NULL>')||'); ',1,2000);\n"
+                            + "         ds_log_w	:= substr(ds_log_w  || CHR(10),1,2000);\n"
+                            + "     end if;\n";
+                } else if ("Number".equals(tipo)) {
+                    retorno += "    if (nvl(:new." + nome + ",0) <> nvl(:old." + nome + ",0)) then\n"
+                            + "         ds_log_w	:= substr(ds_log_w  || ' " + nome + "(' || nvl(:old." + nome + ",0) || ' / ' || nvl(:new." + nome + ",0)||'); ',1,2000);\n"
+                            + "         ds_log_w	:= substr(ds_log_w  || CHR(10),1,2000);\n"
+                            + "    end if;\n";
+                }
+            }
+
+        }
+        return retorno;
+    }
+
+    private String montaVerificaoRegistro() {
+        String retorno = "";
+        retorno = "     if (ds_log_w is not null"
+                + (!tabelaTxtNmUsuario.getText().isEmpty() ? " AND :new.NM_USUARIO = '" + tabelaTxtNmUsuario.getText() + "'" : "")
+                + (!tabelaTxtChavePrimaria.getText().isEmpty() ? " AND :new." + tabelaNmChavePrimaria.getText() + " = " + tabelaTxtChavePrimaria.getText() + "" : "")
+                + ") then\n"
+                + "	\n";
+        if (tabelaNmChavePrimaria.getText() != null && !tabelaNmChavePrimaria.getText().isEmpty()) {
+            retorno += "        if ((nvl(:old." + tabelaNmChavePrimaria.getText() + ", 0) > 0)) then\n"
+                    + "                 ds_log_w := CHR(10) || substr('" + nmTabelaTxt.getText() + " Alterações (old/new)= ' || ds_log_w,1,2000);\n"
+                    + "         else\n"
+                    + "                 ds_log_w := CHR(10) || substr('" + nmTabelaTxt.getText() + " Criação (old/new)= ' || ds_log_w,1,2000);\n"
+                    + "         end if;\n";
+        } else {
+            retorno += "        ds_log_w := CHR(10) || substr('" + nmTabelaTxt.getText() + " Alterações (old/new)= ' || ds_log_w,1,2000);\n";
+        }
+        if (tabelaNmChavePrimaria.getText() != null && !tabelaNmChavePrimaria.getText().isEmpty()) {
+            retorno
+                    += "        ds_log_w := substr(ds_log_w || ' " + tabelaNmChavePrimaria.getText() + ": ('||:old." + tabelaNmChavePrimaria.getText() + "|| ');',1,2000);\n";
+        }
+        retorno += "	\n"
+                + "         ds_stack_w	:= substr(dbms_utility.format_call_stack,1,2000);\n"
+                + "         ds_log_w := substr(ds_log_w ||' FUNCAO('||to_char(obter_funcao_ativa)||'); PERFIL('||to_char(obter_perfil_ativo)||');',1,2000);\n"
+                + "	\n"
+                + "         INSERT INTO " + nvl(dsNomeTabelaTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeTabelaTabelaLog + "_seq.nextval,('" + getNomeTrigger() + " '" + "|| ds_log_w ),(ds_stack_w) , sysdate);\n"
+                + "     end if;\n";
+
+        return retorno;
+    }
+
+    private String montaVerificaoException() {
+        String retorno = "  EXCEPTION\n"
+                + "     when others then \n"
+                + "         ds_erro_w   :=  SUBSTR(SQLERRM, 1, 2000);\n"
+                + "         ds_stack_w  := substr(dbms_utility.format_call_stack,1,2000);\n"
+                + "         INSERT INTO " + nvl(dsNomeTabelaTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeTabelaTabelaLog + "_seq.nextval,('EXCEPTION " + getNomeTrigger() + "- Erro:'|| ds_erro_w),(ds_stack_w) , sysdate);";
+
+        return retorno;
+    }
+
+    private String getNomeTrigger() {
+        return nvl(nmTriggerTxt.getText(), "NomeTabelaVazia");
+    }
+
 }
-
-
