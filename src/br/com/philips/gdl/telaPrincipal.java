@@ -5,6 +5,7 @@
  */
 package br.com.philips.gdl;
 
+import com.bulenkov.darcula.DarculaLaf;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,9 +18,12 @@ import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.plaf.basic.BasicLookAndFeel;
 
 /**
  *
@@ -235,7 +239,7 @@ public class telaPrincipal extends javax.swing.JFrame {
 
         jLabel2.setText("Nome da tabela de log (Exemplo : SO180000)");
 
-        jLabel3.setText("Made by Eduardo Felipe dos Santos.");
+        jLabel3.setText("Made by github.com/efsant0s");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -386,9 +390,6 @@ public class telaPrincipal extends javax.swing.JFrame {
                         .addComponent(objetoBtDescerVariavel))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(tbAbaObjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(tbAbaObjetoLayout.createSequentialGroup()
-                            .addComponent(jLabel9)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaObjetoLayout.createSequentialGroup()
                             .addGroup(tbAbaObjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txtVariavelNome, javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,7 +424,10 @@ public class telaPrincipal extends javax.swing.JFrame {
                                         .addComponent(jchboxCommitInsert)
                                         .addComponent(jchboxQuebraLinha)
                                         .addComponent(jchboxDsComando))))
-                            .addGap(13, 13, 13))))
+                            .addGap(13, 13, 13))
+                        .addGroup(tbAbaObjetoLayout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             );
             tbAbaObjetoLayout.setVerticalGroup(
                 tbAbaObjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,7 +470,10 @@ public class telaPrincipal extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel7)
                             .addGap(12, 12, 12)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel3)
+                            .addGap(6, 6, 6))
                         .addGroup(tbAbaObjetoLayout.createSequentialGroup()
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -489,7 +496,6 @@ public class telaPrincipal extends javax.swing.JFrame {
                                 .addComponent(objetoBtSubirVariavel))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(txtVariavelNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(tbAbaObjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel11)
                                 .addComponent(objetoBtDescerVariavel))
@@ -529,10 +535,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                             .addComponent(checkBoxQuebra3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE)))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabel3)
-                    .addGap(6, 6, 6))
+                            .addGap(0, 0, Short.MAX_VALUE))))
             );
 
             tpAbaPane.addTab("Objetos", tbAbaObjeto);
@@ -690,88 +693,92 @@ public class telaPrincipal extends javax.swing.JFrame {
                     .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane8)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
-                                .addComponent(tabelaNmTabelaLog)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tabelaBtAtualiza))
-                            .addComponent(jScrollPane10)
                             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel21)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel22))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                        .addComponent(tabelaLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane8)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
+                                        .addComponent(tabelaNmTabelaLog)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tabelaBtAtualiza))
+                                    .addComponent(jScrollPane10)
                                     .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                                         .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(nmTabelaTxt)
-                                            .addComponent(tabelaNmChavePrimaria, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel19)
+                                            .addComponent(jLabel18)
+                                            .addComponent(jLabel22))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                                .addComponent(tabelaLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                                                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel17)
+                                                    .addComponent(nmTabelaTxt)
+                                                    .addComponent(tabelaNmChavePrimaria, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tbAbaTabelaLayout.createSequentialGroup()
-                                                                .addComponent(tabelaBtAddVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(tabelaBtRemoveVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(tabelaBtSubirVariavel)
-                                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
-                                                                .addComponent(tabelaBtDescerVariavel)
-                                                                .addGap(1, 1, 1))))
-                                                    .addComponent(jLabel25))
-                                                .addGap(0, 2, Short.MAX_VALUE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator12)
-                                    .addComponent(jSeparator8)
-                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
+                                                            .addComponent(jLabel17)
+                                                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tbAbaTabelaLayout.createSequentialGroup()
+                                                                        .addComponent(tabelaBtAddVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(tabelaBtRemoveVariavel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                    .addComponent(tabelaBtSubirVariavel)
+                                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
+                                                                        .addComponent(tabelaBtDescerVariavel)
+                                                                        .addGap(1, 1, 1))))
+                                                            .addComponent(jLabel25))
+                                                        .addGap(0, 2, Short.MAX_VALUE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                         .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jSeparator12)
+                                            .addComponent(jSeparator8)
                                             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                                .addComponent(jLabel10)
-                                                .addGap(99, 100, Short.MAX_VALUE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
+                                                .addGap(2, 2, 2)
                                                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                                        .addComponent(jLabel10)
+                                                        .addGap(99, 100, Short.MAX_VALUE))
                                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
-                                                        .addComponent(jLabel12)
-                                                        .addGap(0, 0, Short.MAX_VALUE))
-                                                    .addComponent(txtTabelaVariavelTextoCondicao, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(txtTabelaVariavelNome, javax.swing.GroupLayout.Alignment.TRAILING))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                        .addComponent(jLabel13))
-                                    .addComponent(nmTriggerTxt)
-                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel24)
-                                            .addComponent(tabelaTxtChavePrimaria)))
-                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tabelaJrBMaskCompleta)
-                                            .addComponent(tabelaJrbSemMask)
-                                            .addComponent(tabelaJrbDias)
-                                            .addComponent(jLabel15)
-                                            .addComponent(tabelaJrbHoras)
-                                            .addComponent(tabelaLabel1)
-                                            .addComponent(jLabel23))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGap(18, 18, 18)
-                        .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20))
+                                                        .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
+                                                                .addComponent(jLabel12)
+                                                                .addGap(0, 0, Short.MAX_VALUE))
+                                                            .addComponent(txtTabelaVariavelTextoCondicao, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                            .addComponent(txtTabelaVariavelNome, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                                .addComponent(jLabel13))
+                                            .addComponent(nmTriggerTxt)
+                                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel24)
+                                                    .addComponent(tabelaTxtChavePrimaria)))
+                                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(tabelaJrBMaskCompleta)
+                                                    .addComponent(tabelaJrbSemMask)
+                                                    .addComponent(tabelaJrbDias)
+                                                    .addComponent(jLabel15)
+                                                    .addComponent(tabelaJrbHoras)
+                                                    .addComponent(tabelaLabel1)
+                                                    .addComponent(jLabel23))
+                                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(18, 18, 18)
+                                .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel20)))
+                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                 );
                 tbAbaTabelaLayout.setVerticalGroup(
@@ -784,7 +791,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                                     .addComponent(tabelaLabel)
                                     .addComponent(jLabel20))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane9)
                                     .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                                         .addComponent(nmTabelaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -812,7 +819,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                                                         .addComponent(tabelaBtSubirVariavel)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(tabelaBtDescerVariavel))
-                                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+                                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel18))
                                             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
@@ -857,7 +864,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel22)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                                     .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                                 .addComponent(tabelaLabel1)
@@ -865,7 +872,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                                 .addComponent(nmTriggerTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel21)
-                        .addContainerGap(13, Short.MAX_VALUE))
+                        .addGap(8, 8, 8))
                 );
 
                 tpAbaPane.addTab("Tabelas", tbAbaTabela);
@@ -1077,28 +1084,19 @@ public class telaPrincipal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        BasicLookAndFeel darcula = new DarculaLaf();
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(telaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(telaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(telaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(telaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel(darcula);
+            //</editor-fold>
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(telaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1371,7 +1369,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         //return ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty()) ? "if(nm_usuario_p = '" + txtNmUsuarioP.getText() + "') then " : "") + "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (('" + nvl(nmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate)" + (this.jchboxCommitInsert.isSelected() ? ";commit" : "") + ";" + ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty()) ? "end if;" : "");
         String retorno = "";
         if ((txtVariavelNome.getText() != null && !txtVariavelNome.getText().trim().isEmpty()) && (txtVariavelTextoCondicao.getText() != null && !txtVariavelTextoCondicao.getText().trim().isEmpty())) {
-            retorno += "if(nm_usuario_p = '" + txtVariavelTextoCondicao.getText() + "') then ";
+            retorno += "if("+txtVariavelNome.getText()+" = '" + txtVariavelTextoCondicao.getText() + "') then ";
         }
         retorno += "INSERT INTO " + nvl(dsNomeObjetoTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeObjetoTabelaLog + "_seq.nextval,"
                 + "('" + nvl(objetoNmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + "), ";
@@ -1560,5 +1558,6 @@ public class telaPrincipal extends javax.swing.JFrame {
     private String getNomeTrigger() {
         return nvl(nmTriggerTxt.getText(), "NomeTabelaVazia");
     }
+ 
 
 }
