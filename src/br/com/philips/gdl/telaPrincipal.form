@@ -107,42 +107,54 @@
                           <Component id="objetoBtSubirVariavel" min="-2" max="-2" attributes="0"/>
                           <Component id="objetoBtDescerVariavel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jSeparator3" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator5" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator6" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jScrollPane5" alignment="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="checkBoxQuebra3" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jchboxStackTrace" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jchboxCommitInsert" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jchboxQuebraLinha" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtVariavelNome" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jSeparator3" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jSeparator5" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jSeparator6" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane5" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="checkBoxQuebra3" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txtVariavelTextoCondicao" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jSeparator7" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jSeparator9" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="objetoJrbMaskCompleta" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="objetoJrbSemMask" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="objetoJrbDias" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxQuebra1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxQuebra" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxQuebra2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSeparator1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="objetoJrbHoras" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxQuebra4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jchboxStackTrace" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jchboxCommitInsert" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jchboxQuebraLinha" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jchboxDsComando" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtNmUsuarioP" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jSeparator7" alignment="0" max="32767" attributes="0"/>
-                          <Component id="objetoJrbMaskCompleta" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="objetoJrbSemMask" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="objetoJrbDias" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBoxQuebra1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBoxQuebra" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBoxQuebra2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
-                          <Component id="objetoJrbHoras" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -189,7 +201,7 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane3" pref="305" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane3" pref="315" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -198,6 +210,9 @@
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Component id="jScrollPane4" min="-2" pref="287" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
@@ -222,14 +237,13 @@
                                   <Component id="objetoBtSubirVariavel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtVariavelNome" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="objetoBtDescerVariavel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtNmUsuarioP" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtVariavelTextoCondicao" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jSeparator3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -256,19 +270,25 @@
                                       <Component id="checkBoxQuebra2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="checkBoxQuebra3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane5" min="-2" pref="116" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jchboxStackTrace" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchboxStackTrace" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="checkBoxQuebra4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="jSeparator9" min="-2" pref="10" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jchboxDsComando" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="checkBoxQuebra3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jScrollPane5" min="-2" pref="116" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -346,7 +366,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Made by Eduardo Felipe dos Santos."/>
+                <Property name="text" type="java.lang.String" value="Made by github.com/efsant0s"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel3MouseClicked"/>
@@ -418,11 +438,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="objetoBtAtualizaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel10">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="NM_USUARIO_P  for:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="checkBoxQuebra1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Commit depois insert"/>
@@ -463,6 +478,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
+                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="dd/mm/yyyy h24:mi:ss"/>
               </Properties>
             </Component>
@@ -475,7 +491,7 @@
                 <Property name="text" type="java.lang.String" value="Incluir StackTrace"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNmUsuarioP">
+            <Component class="javax.swing.JTextField" name="txtVariavelTextoCondicao">
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator3">
             </Component>
@@ -489,7 +505,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Sem m&#xe1;scara"/>
               </Properties>
             </Component>
@@ -523,7 +538,7 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
-                <Property name="text" type="java.lang.String" value="(Vazio para nada)"/>
+                <Property name="text" type="java.lang.String" value="For:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator1">
@@ -538,7 +553,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cair no log quando"/>
+                <Property name="text" type="java.lang.String" value="Cair apenas se a vari&#xe1;vel"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator7">
@@ -559,6 +574,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="objetoBtDescerVariavelActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="checkBoxQuebra4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Incluir DS_COMANDO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jchboxDsComando">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jchboxDsComandoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator9">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtVariavelNome">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="tbAbaTabela">
@@ -576,94 +605,122 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="tabelaNmTabelaLog" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tabelaBtAtualiza" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane10" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="tabelaLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="186" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="tabelaNmTabelaLog" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tabelaBtAtualiza" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jScrollPane10" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="nmTabelaTxt" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tabelaNmChavePrimaria" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jLabel16" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="tabelaLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="186" max="32767" attributes="0"/>
+                                          </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="nmTabelaTxt" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="tabelaNmChavePrimaria" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="jLabel16" max="32767" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                                           <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="tabelaBtAddVariavel" min="-2" pref="50" max="-2" attributes="0"/>
-                                                              <EmptySpace max="32767" attributes="0"/>
-                                                              <Component id="tabelaBtRemoveVariavel" min="-2" pref="49" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                                  <Group type="102" alignment="0" attributes="0">
+                                                                      <Component id="tabelaBtAddVariavel" min="-2" pref="50" max="-2" attributes="0"/>
+                                                                      <EmptySpace max="32767" attributes="0"/>
+                                                                      <Component id="tabelaBtRemoveVariavel" min="-2" pref="49" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                                  <Component id="jScrollPane7" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="tabelaBtSubirVariavel" min="-2" max="-2" attributes="0"/>
+                                                                  <Group type="102" alignment="1" attributes="0">
+                                                                      <Component id="tabelaBtDescerVariavel" min="-2" max="-2" attributes="0"/>
+                                                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
                                                           </Group>
-                                                          <Component id="jScrollPane7" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                                                          <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jSeparator12" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jSeparator8" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="99" pref="100" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" alignment="1" attributes="0">
+                                                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                          </Group>
+                                                          <Component id="txtTabelaVariavelTextoCondicao" alignment="1" max="32767" attributes="0"/>
+                                                          <Component id="txtTabelaVariavelNome" alignment="1" max="32767" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="tabelaBtSubirVariavel" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="tabelaBtDescerVariavel" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
                                                   </Group>
+                                              </Group>
+                                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="nmTriggerTxt" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tabelaTxtChavePrimaria" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="tabelaJrBMaskCompleta" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tabelaJrbSemMask" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tabelaJrbDias" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tabelaJrbHoras" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tabelaLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="tabelaBtGerarTrigger" min="-2" pref="121" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jSeparator12" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jSeparator8" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="nmTriggerTxt" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tabelaTxtChavePrimaria" alignment="0" pref="242" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tabelaJrBMaskCompleta" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tabelaJrbSemMask" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tabelaJrbDias" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tabelaJrbHoras" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tabelaLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jScrollPane9" min="-2" pref="787" max="-2" attributes="0"/>
+                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="tabelaBtGerarTrigger" min="-2" pref="121" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane9" min="-2" pref="787" max="-2" attributes="0"/>
-                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -680,19 +737,44 @@
                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane9" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="nmTabelaTxt" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="tabelaJrbSemMask" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="tabelaJrbSemMask" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="tabelaBtRemoveVariavel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tabelaBtAddVariavel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="tabelaBtSubirVariavel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="tabelaBtDescerVariavel" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="jScrollPane7" pref="214" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="3" attributes="0">
                                                   <Component id="tabelaJrBMaskCompleta" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -712,30 +794,24 @@
                                               <Component id="tabelaTxtChavePrimaria" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="jSeparator8" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="tabelaBtRemoveVariavel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="tabelaBtAddVariavel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jScrollPane7" min="-2" pref="182" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
-                                                      <Component id="tabelaBtSubirVariavel" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="tabelaBtDescerVariavel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="txtTabelaVariavelNome" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtTabelaVariavelTextoCondicao" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="tabelaNmTabelaLog" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -747,8 +823,8 @@
                                       <Component id="jScrollPane8" min="-2" pref="170" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane10" min="-2" pref="113" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jScrollPane10" pref="119" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="tabelaBtGerarTrigger" max="32767" attributes="0"/>
                               </Group>
@@ -761,7 +837,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -894,7 +970,7 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabel21">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Made by Eduardo Felipe dos Santos."/>
+                <Property name="text" type="java.lang.String" value="Made by github.com/efsant0s"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel21MouseClicked"/>
@@ -966,7 +1042,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel17">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Chave prim&#xe1;ria, (deixar vazio se mais de uma)."/>
+                <Property name="text" type="java.lang.String" value="(Deixar vazio em caso de v&#xe1;rias PKS)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tabelaTxtChavePrimaria">
@@ -1009,6 +1085,25 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tabelaBtDescerVariavelActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtTabelaVariavelTextoCondicao">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel12">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="For:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtTabelaVariavelNome">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cair apenas se a vari&#xe1;vel"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel25">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome da chave prim&#xe1;ria"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
