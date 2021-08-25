@@ -2,7 +2,7 @@
 
 Download: https://github.com/efsant0s/GeradorDeLogs/raw/master/dist/GeradorDeLogs.jar
 
-Essa ferramenta foiador de logs. criada para auxiliar no processo de "Debug" de Tabelas e objetos PL SQL .
+Essa ferramenta gerador de logs. criada para auxiliar no processo de "Debug" de Tabelas e objetos PL SQL .
 
 Para objetos:
 Funciona através de um processo de
