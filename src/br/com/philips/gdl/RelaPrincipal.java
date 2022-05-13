@@ -29,12 +29,12 @@ import javax.swing.plaf.basic.BasicLookAndFeel;
  *
  * @author efsantos
  */
-public class telaPrincipal extends javax.swing.JFrame {
-
+public class RelaPrincipal extends javax.swing.JFrame {
+    GeradorModel modelo = new GeradorModel();
     /**
      * Creates new form telaPrincipal
      */
-    public telaPrincipal() {
+    public RelaPrincipal() {
         initComponents();
         this.objetoListaVariaveis.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
@@ -54,8 +54,8 @@ public class telaPrincipal extends javax.swing.JFrame {
         });
         tabelaTxtChavePrimaria.setEnabled(false);
     }
-
-    private static List<String> objetosListaAtributos = new ArrayList<String>();
+    
+    private static LinkedHashMap<String, String> objetoListaAtributos = new LinkedHashMap(); 
     private static LinkedHashMap<String, String> tabelaListaAtributos = new LinkedHashMap();
     private String dsNomeObjetoTabelaLog = "SO";
     private String dsNomeTabelaTabelaLog = "SO";
@@ -142,6 +142,8 @@ public class telaPrincipal extends javax.swing.JFrame {
         jchboxDsComando = new javax.swing.JCheckBox();
         jSeparator9 = new javax.swing.JSeparator();
         txtVariavelNome = new javax.swing.JTextField();
+        btnCarregar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         tbAbaTabela = new javax.swing.JPanel();
         jSeparator8 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
@@ -215,8 +217,8 @@ public class telaPrincipal extends javax.swing.JFrame {
         });
 
         objetoListaVariaveis.setModel(new javax.swing.AbstractListModel() {
-            String variaveis[] = objetosListaAtributos.toArray(new String[0]);
-            //nomeObjetos.toArray(new String[objetosListaAtributos.size()]);
+            String variaveis[] = new String[9999];
+            //nomeObjetos.toArray(new String[objetoListaAtributos.size()]);
             public int getSize() { return variaveis.length; }
             public Object getElementAt(int i) { return variaveis[i]; }
         });
@@ -349,6 +351,20 @@ public class telaPrincipal extends javax.swing.JFrame {
                 }
             });
 
+            btnCarregar.setText("Carregar");
+            btnCarregar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btnCarregarActionPerformed(evt);
+                }
+            });
+
+            btnSalvar.setText("Salvar");
+            btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btnSalvarActionPerformed(evt);
+                }
+            });
+
             javax.swing.GroupLayout tbAbaObjetoLayout = new javax.swing.GroupLayout(tbAbaObjeto);
             tbAbaObjeto.setLayout(tbAbaObjetoLayout);
             tbAbaObjetoLayout.setHorizontalGroup(
@@ -390,6 +406,9 @@ public class telaPrincipal extends javax.swing.JFrame {
                         .addComponent(objetoBtDescerVariavel))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(tbAbaObjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(tbAbaObjetoLayout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaObjetoLayout.createSequentialGroup()
                             .addGroup(tbAbaObjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txtVariavelNome, javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,11 +442,10 @@ public class telaPrincipal extends javax.swing.JFrame {
                                         .addComponent(jchboxStackTrace)
                                         .addComponent(jchboxCommitInsert)
                                         .addComponent(jchboxQuebraLinha)
-                                        .addComponent(jchboxDsComando))))
-                            .addGap(13, 13, 13))
-                        .addGroup(tbAbaObjetoLayout.createSequentialGroup()
-                            .addComponent(jLabel9)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(jchboxDsComando)))
+                                .addComponent(btnCarregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(13, 13, 13))))
             );
             tbAbaObjetoLayout.setVerticalGroup(
                 tbAbaObjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -535,7 +553,11 @@ public class telaPrincipal extends javax.swing.JFrame {
                             .addComponent(checkBoxQuebra3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnCarregar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(56, 56, 56))))
             );
 
             tpAbaPane.addTab("Objetos", tbAbaObjeto);
@@ -572,8 +594,8 @@ public class telaPrincipal extends javax.swing.JFrame {
             jLabel16.setText("Variáveis da tabela para incluir nos logs");
 
             tabelaListaVariaveis.setModel(new javax.swing.AbstractListModel() {
-                String variaveis[] = objetosListaAtributos.toArray(new String[0]);
-                //nomeObjetos.toArray(new String[objetosListaAtributos.size()]);
+                String variaveis[] = new String[9999];
+                //nomeObjetos.toArray(new String[objetoListaAtributos.size()]);
                 public int getSize() { return variaveis.length; }
                 public Object getElementAt(int i) { return variaveis[i]; }
             });
@@ -1008,17 +1030,12 @@ public class telaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaNmChavePrimariaFocusLost
 
     private void objetoBtSubirVariavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_objetoBtSubirVariavelActionPerformed
-        boolean listaVaziaOuItemUnico = objetosListaAtributos.size() == 0 || objetosListaAtributos.size() == 1;
+        boolean listaVaziaOuItemUnico = objetoListaAtributos.size() == 0 || objetoListaAtributos.size() == 1;
         if (!listaVaziaOuItemUnico) {
             int index = objetoListaVariaveis.getSelectedIndex();
-            // Swap values at positions index-1 and index.
-            String temp = objetosListaAtributos.get(index - 1); // Save value before overwrite.
-            objetosListaAtributos.set(index - 1, objetosListaAtributos.get(index)); // First half of swap.
-            objetosListaAtributos.set(index, temp); // Final operation for swap.
-
+            alterarOrdemLinkedHashMap(-1, index);
             this.objetoAtualizaLista();
             objetoListaVariaveis.setSelectedIndex(index - 1);
-
         }
     }//GEN-LAST:event_objetoBtSubirVariavelActionPerformed
 
@@ -1027,17 +1044,12 @@ public class telaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaListaVariaveisPropertyChange
 
     private void objetoBtDescerVariavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_objetoBtDescerVariavelActionPerformed
-        boolean listaVaziaOuItemUnico = objetosListaAtributos.size() == 0 || objetosListaAtributos.size() == 1;
+        boolean listaVaziaOuItemUnico = objetoListaAtributos.size() == 0 || objetoListaAtributos.size() == 1;
         if (!listaVaziaOuItemUnico) {
             int index = objetoListaVariaveis.getSelectedIndex();
-            // Swap values at positions index-1 and index.
-            String temp = objetosListaAtributos.get(index + 1); // Save value before overwrite.
-            objetosListaAtributos.set(index + 1, objetosListaAtributos.get(index)); // First half of swap.
-            objetosListaAtributos.set(index, temp); // Final operation for swap.
-
+            alterarOrdemLinkedHashMap(+1, index);
             this.objetoAtualizaLista();
             objetoListaVariaveis.setSelectedIndex(index + 1);
-
         }
     }//GEN-LAST:event_objetoBtDescerVariavelActionPerformed
 
@@ -1076,6 +1088,14 @@ public class telaPrincipal extends javax.swing.JFrame {
     private void jchboxDsComandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchboxDsComandoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jchboxDsComandoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+            // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCarregarActionPerformed
     private String atualizaAspasOracle(String texto) {
         return nvl(texto, "").replace("'", "''");
     }
@@ -1095,15 +1115,15 @@ public class telaPrincipal extends javax.swing.JFrame {
             UIManager.setLookAndFeel(darcula);
             //</editor-fold>
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(telaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            private telaPrincipal tela;
+            private RelaPrincipal tela;
 
             public void run() {
-                tela = new telaPrincipal();
+                tela = new RelaPrincipal();
                 tela.setVisible(true);
                 tela.objetoAtualizaScript();
                 tela.tabelaAtualizaScript();
@@ -1116,7 +1136,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                     java.awt.Image image = ImageIO.read(url);
                     tela.setIconImage(image);
                 } catch (IOException ex) {
-                    Logger.getLogger(telaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -1124,6 +1144,8 @@ public class telaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCarregar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel checkBoxQuebra;
@@ -1269,10 +1291,11 @@ public class telaPrincipal extends javax.swing.JFrame {
         }
         return value;
     }
+ 
 
     public void objetoAtualizaLista() {
         objetoListaVariaveis.setModel(new javax.swing.AbstractListModel() {
-            String variaveis[] = objetosListaAtributos.toArray(new String[0]);
+            Object variaveis[] = objetoListaAtributos.keySet().toArray();
 
             public int getSize() {
                 return variaveis.length;
@@ -1300,8 +1323,8 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     private void itemListaVariavelObjetoSelecionado() {
         if (objetoListaVariaveis.getSelectedIndex() != -1) {
-            boolean listaVaziaOuItemUnico = objetosListaAtributos.size() == 0 || objetosListaAtributos.size() == 1;
-            boolean ultimaDalista = objetoListaVariaveis.getSelectedIndex() + 1 == objetosListaAtributos.size();
+            boolean listaVaziaOuItemUnico = objetoListaAtributos.size() == 0 || objetoListaAtributos.size() == 1;
+            boolean ultimaDalista = objetoListaVariaveis.getSelectedIndex() + 1 == objetoListaAtributos.size();
             boolean primeiroDaLista = objetoListaVariaveis.getSelectedIndex() == 0;
             objetoBtSubirVariavel.setEnabled(!listaVaziaOuItemUnico && !primeiroDaLista);
             objetoBtDescerVariavel.setEnabled(!listaVaziaOuItemUnico && !ultimaDalista);
@@ -1325,8 +1348,10 @@ public class telaPrincipal extends javax.swing.JFrame {
     }
 
     private void objetoAdicionaVariavel() {
-        String valor = nvl(JOptionPane.showInputDialog("Nome da variável"), "ds");
-        this.objetosListaAtributos.add(valor);
+        String[] lista = janelaVariavel();
+        if (lista != null) {
+            this.objetoListaAtributos.put(lista[0], lista[1]);
+        }
         objetoAtualizaLista();
 
     }
@@ -1353,7 +1378,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         int index = objetoListaVariaveis.getSelectedIndex();
         if (index > -1) {
             if (JOptionPane.showConfirmDialog(null, "Deseja realmente remover essa variável?") == JOptionPane.YES_OPTION) {
-                this.objetosListaAtributos.remove(index);
+                this.objetoListaAtributos.remove(index);
                 objetoAtualizaLista();
             }
         }
@@ -1363,9 +1388,13 @@ public class telaPrincipal extends javax.swing.JFrame {
         String quebraLinha = jchboxQuebraLinha.isSelected() ? "||  CHR(10)" : " ";
 
         String vars = "|| ' linha:' || $$plsql_line " + quebraLinha;
-        for (String objs : objetosListaAtributos) {
-            vars += " || '| " + atualizaAspasOracle(objs) + ": ' || " + objetoMontaValor(objs) + quebraLinha;
+        for (Map.Entry<String, String> entry : objetoListaAtributos.entrySet()) {
+            String val = entry.getValue();
+            String key = entry.getKey();
+            vars += " || '| " + atualizaAspasOracle(key) + ": ' || " + (val.equals("Date") ?  objetoMontaValor(key) : val) + quebraLinha;
+            
         }
+ 
         //return ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty()) ? "if(nm_usuario_p = '" + txtNmUsuarioP.getText() + "') then " : "") + "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (('" + nvl(nmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate)" + (this.jchboxCommitInsert.isSelected() ? ";commit" : "") + ";" + ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty()) ? "end if;" : "");
         String retorno = "";
         if ((txtVariavelNome.getText() != null && !txtVariavelNome.getText().trim().isEmpty()) && (txtVariavelTextoCondicao.getText() != null && !txtVariavelTextoCondicao.getText().trim().isEmpty())) {
@@ -1398,7 +1427,7 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     private String objetoMontaValor(String var) {
         String retorno = var != null ? var.toUpperCase() : null;
-        if (retorno != null && retorno.startsWith("DT_")) {
+        if (retorno != null) {
             if (this.objetoJrbMaskCompleta.isSelected()) {
                 retorno = "to_char(" + var + ",'dd/mm/yyyy hh24:mi:ss')";
             } else if (this.objetoJrbDias.isSelected()) {

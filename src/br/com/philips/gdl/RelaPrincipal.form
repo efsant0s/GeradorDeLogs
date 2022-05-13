@@ -109,6 +109,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="txtVariavelNome" alignment="0" max="32767" attributes="0"/>
@@ -147,12 +151,10 @@
                                           <Component id="jchboxDsComando" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Component id="btnCarregar" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnSalvar" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -214,7 +216,7 @@
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
@@ -286,7 +288,11 @@
                               <Component id="checkBoxQuebra3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jScrollPane5" min="-2" pref="116" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnSalvar" min="-2" pref="59" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnCarregar" min="-2" pref="59" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -335,7 +341,7 @@
                 <Component class="javax.swing.JList" name="objetoListaVariaveis">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.AbstractListModel() {&#xa;    String variaveis[] = objetosListaAtributos.toArray(new String[0]);&#xa;    //nomeObjetos.toArray(new String[objetosListaAtributos.size()]);&#xa;    public int getSize() { return variaveis.length; }&#xa;    public Object getElementAt(int i) { return variaveis[i]; }&#xa;}" type="code"/>
+                      <Connection code="new javax.swing.AbstractListModel() {&#xa;    String variaveis[] = objetoListaAtributos.toArray(new String[0]);&#xa;    //nomeObjetos.toArray(new String[objetoListaAtributos.size()]);&#xa;    public int getSize() { return variaveis.length; }&#xa;    public Object getElementAt(int i) { return variaveis[i]; }&#xa;}" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -587,6 +593,22 @@
             <Component class="javax.swing.JSeparator" name="jSeparator9">
             </Component>
             <Component class="javax.swing.JTextField" name="txtVariavelNome">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCarregar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Carregar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarregarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnSalvar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salvar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -918,7 +940,7 @@
                 <Component class="javax.swing.JList" name="tabelaListaVariaveis">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.AbstractListModel() {&#xa;    String variaveis[] = objetosListaAtributos.toArray(new String[0]);&#xa;    //nomeObjetos.toArray(new String[objetosListaAtributos.size()]);&#xa;    public int getSize() { return variaveis.length; }&#xa;    public Object getElementAt(int i) { return variaveis[i]; }&#xa;}" type="code"/>
+                      <Connection code="new javax.swing.AbstractListModel() {&#xa;    String variaveis[] = objetoListaAtributos.toArray(new String[0]);&#xa;    //nomeObjetos.toArray(new String[objetoListaAtributos.size()]);&#xa;    public int getSize() { return variaveis.length; }&#xa;    public Object getElementAt(int i) { return variaveis[i]; }&#xa;}" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
