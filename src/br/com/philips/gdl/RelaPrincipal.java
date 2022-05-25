@@ -30,7 +30,9 @@ import javax.swing.plaf.basic.BasicLookAndFeel;
  * @author efsantos
  */
 public class RelaPrincipal extends javax.swing.JFrame {
+
     GeradorModel modelo = new GeradorModel();
+
     /**
      * Creates new form telaPrincipal
      */
@@ -52,10 +54,9 @@ public class RelaPrincipal extends javax.swing.JFrame {
             }
 
         });
-        tabelaTxtChavePrimaria.setEnabled(false);
     }
-    
-    private static LinkedHashMap<String, String> objetoListaAtributos = new LinkedHashMap(); 
+
+    private static LinkedHashMap<String, String> objetoListaAtributos = new LinkedHashMap();
     private static LinkedHashMap<String, String> tabelaListaAtributos = new LinkedHashMap();
     private String dsNomeObjetoTabelaLog = "SO";
     private String dsNomeTabelaTabelaLog = "SO";
@@ -176,9 +177,6 @@ public class RelaPrincipal extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         tabelaNmChavePrimaria = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        tabelaTxtChavePrimaria = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         tabelaLabel1 = new javax.swing.JLabel();
         nmTriggerTxt = new javax.swing.JTextField();
         tabelaBtSubirVariavel = new javax.swing.JToggleButton();
@@ -188,6 +186,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
         txtTabelaVariavelNome = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
+        cbIeIncluirDeleteRegistros = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerador de logs");
@@ -210,14 +209,14 @@ public class RelaPrincipal extends javax.swing.JFrame {
         });
 
         objetoBtRemoveVariavel.setText("-");
-        objetoBtRemoveVariavel.addActionListener(new java.awt.event.ActionListener() {
+		objetoBtRemoveVariavel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 objetoBtRemoveVariavelActionPerformed(evt);
             }
         });
 
         objetoListaVariaveis.setModel(new javax.swing.AbstractListModel() {
-            String variaveis[] = new String[9999];
+            String variaveis[] =  {};
             //nomeObjetos.toArray(new String[objetoListaAtributos.size()]);
             public int getSize() { return variaveis.length; }
             public Object getElementAt(int i) { return variaveis[i]; }
@@ -594,7 +593,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
             jLabel16.setText("Variáveis da tabela para incluir nos logs");
 
             tabelaListaVariaveis.setModel(new javax.swing.AbstractListModel() {
-                String variaveis[] = new String[9999];
+                String variaveis[]  =  {};
                 //nomeObjetos.toArray(new String[objetoListaAtributos.size()]);
                 public int getSize() { return variaveis.length; }
                 public Object getElementAt(int i) { return variaveis[i]; }
@@ -675,10 +674,6 @@ public class RelaPrincipal extends javax.swing.JFrame {
 
             jLabel17.setText("(Deixar vazio em caso de várias PKS)");
 
-            jLabel23.setText("(Vazio para nada)");
-
-            jLabel24.setText("Cair apenas quando a chave primária for:");
-
             tabelaLabel1.setText("Nome da Trigger, EX: Temp_Trigg_SO2044");
 
             nmTriggerTxt.setText("Temp_Trigger_");
@@ -707,6 +702,14 @@ public class RelaPrincipal extends javax.swing.JFrame {
                 jLabel10.setText("Cair apenas se a variável");
 
                 jLabel25.setText("Nome da chave primária");
+
+                cbIeIncluirDeleteRegistros.setSelected(true);
+                cbIeIncluirDeleteRegistros.setText("Incluir delete de registros");
+                cbIeIncluirDeleteRegistros.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        cbIeIncluirDeleteRegistrosActionPerformed(evt);
+                    }
+                });
 
                 javax.swing.GroupLayout tbAbaTabelaLayout = new javax.swing.GroupLayout(tbAbaTabela);
                 tbAbaTabela.setLayout(tbAbaTabelaLayout);
@@ -778,11 +781,6 @@ public class RelaPrincipal extends javax.swing.JFrame {
                                                 .addComponent(jLabel13))
                                             .addComponent(nmTriggerTxt)
                                             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
-                                                .addGap(1, 1, 1)
-                                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel24)
-                                                    .addComponent(tabelaTxtChavePrimaria)))
-                                            .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                                                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(tabelaJrBMaskCompleta)
                                                     .addComponent(tabelaJrbSemMask)
@@ -790,7 +788,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
                                                     .addComponent(jLabel15)
                                                     .addComponent(tabelaJrbHoras)
                                                     .addComponent(tabelaLabel1)
-                                                    .addComponent(jLabel23))
+                                                    .addComponent(cbIeIncluirDeleteRegistros))
                                                 .addGap(0, 0, Short.MAX_VALUE)))))
                                 .addGap(18, 18, 18)
                                 .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -854,13 +852,9 @@ public class RelaPrincipal extends javax.swing.JFrame {
                                                 .addComponent(tabelaJrbHoras)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel24)
-                                                .addGap(1, 1, 1)
-                                                .addComponent(jLabel23)
-                                                .addGap(12, 12, 12)
-                                                .addComponent(tabelaTxtChavePrimaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGap(29, 29, 29)
+                                                .addComponent(cbIeIncluirDeleteRegistros)
+                                                .addGap(34, 34, 34)
                                                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(tbAbaTabelaLayout.createSequentialGroup()
@@ -1020,12 +1014,6 @@ public class RelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaNmChavePrimariaActionPerformed
 
     private void tabelaNmChavePrimariaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelaNmChavePrimariaFocusLost
-        if (tabelaTxtChavePrimaria.isEnabled() && tabelaNmChavePrimaria.getText().isEmpty()) {
-            tabelaTxtChavePrimaria.setText("");
-            tabelaTxtChavePrimaria.setEnabled(false);
-        } else if (!tabelaTxtChavePrimaria.isEnabled() && !tabelaNmChavePrimaria.getText().isEmpty()) {
-            tabelaTxtChavePrimaria.setEnabled(true);
-        }
 
     }//GEN-LAST:event_tabelaNmChavePrimariaFocusLost
 
@@ -1090,12 +1078,16 @@ public class RelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jchboxDsComandoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-            // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCarregarActionPerformed
+
+    private void cbIeIncluirDeleteRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbIeIncluirDeleteRegistrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbIeIncluirDeleteRegistrosActionPerformed
     private String atualizaAspasOracle(String texto) {
         return nvl(texto, "").replace("'", "''");
     }
@@ -1104,7 +1096,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1148,6 +1140,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JCheckBox cbIeIncluirDeleteRegistros;
     private javax.swing.JLabel checkBoxQuebra;
     private javax.swing.JLabel checkBoxQuebra1;
     private javax.swing.JLabel checkBoxQuebra2;
@@ -1168,8 +1161,6 @@ public class RelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1237,7 +1228,6 @@ public class RelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JList tabelaListaVariaveis;
     private javax.swing.JTextField tabelaNmChavePrimaria;
     private javax.swing.JTextField tabelaNmTabelaLog;
-    private javax.swing.JTextField tabelaTxtChavePrimaria;
     private javax.swing.JPanel tbAbaObjeto;
     private javax.swing.JPanel tbAbaTabela;
     private javax.swing.JTabbedPane tpAbaPane;
@@ -1291,7 +1281,6 @@ public class RelaPrincipal extends javax.swing.JFrame {
         }
         return value;
     }
- 
 
     public void objetoAtualizaLista() {
         objetoListaVariaveis.setModel(new javax.swing.AbstractListModel() {
@@ -1391,14 +1380,14 @@ public class RelaPrincipal extends javax.swing.JFrame {
         for (Map.Entry<String, String> entry : objetoListaAtributos.entrySet()) {
             String val = entry.getValue();
             String key = entry.getKey();
-            vars += " || '| " + atualizaAspasOracle(key) + ": ' || " + (val.equals("Date") ?  objetoMontaValor(key) : val) + quebraLinha;
-            
+            vars += " || '| " + atualizaAspasOracle(key) + ": ' || " + (val.equals("Date") ? objetoMontaValor(key) : val) + quebraLinha;
+
         }
- 
+
         //return ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty()) ? "if(nm_usuario_p = '" + txtNmUsuarioP.getText() + "') then " : "") + "INSERT INTO " + nvl(dsNomeTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (('" + nvl(nmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + ") , sysdate)" + (this.jchboxCommitInsert.isSelected() ? ";commit" : "") + ";" + ((txtNmUsuarioP.getText() != null && !txtNmUsuarioP.getText().trim().isEmpty()) ? "end if;" : "");
         String retorno = "";
         if ((txtVariavelNome.getText() != null && !txtVariavelNome.getText().trim().isEmpty()) && (txtVariavelTextoCondicao.getText() != null && !txtVariavelTextoCondicao.getText().trim().isEmpty())) {
-            retorno += "if("+txtVariavelNome.getText()+" = '" + txtVariavelTextoCondicao.getText() + "') then ";
+            retorno += "if(" + txtVariavelNome.getText() + " = '" + txtVariavelTextoCondicao.getText() + "') then ";
         }
         retorno += "INSERT INTO " + nvl(dsNomeObjetoTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeObjetoTabelaLog + "_seq.nextval,"
                 + "('" + nvl(objetoNmObjeto.getText(), "NOME_OBJETO_VAZIO") + "'" + vars + "), ";
@@ -1442,7 +1431,8 @@ public class RelaPrincipal extends javax.swing.JFrame {
     private void geraTrigger() {
         //TODO Não deixar gerar o texto trigger sem o nome da tabela.
         String trigger = "CREATE  OR REPLACE  TRIGGER " + getNomeTrigger() + "\n"
-                + "AFTER INSERT OR UPDATE\n"
+                + "AFTER INSERT OR UPDATE"
+                + (cbIeIncluirDeleteRegistros.isSelected() ? " OR DELETE \n" : " \n")
                 + "   ON " + nmTabelaTxt.getText() + "\n"
                 + "    FOR EACH ROW \n"
                 + "\n"
@@ -1548,13 +1538,12 @@ public class RelaPrincipal extends javax.swing.JFrame {
                 retorno += " AND :new." + txtTabelaVariavelNome.getText() + " = '" + txtTabelaVariavelTextoCondicao.getText() + "'";
             }
         }
-        retorno += (!tabelaTxtChavePrimaria.getText().isEmpty() ? " AND :new." + tabelaNmChavePrimaria.getText() + " = " + tabelaTxtChavePrimaria.getText() + "" : "")
-                + ") then\n"
+        retorno += ") then\n"
                 + "	\n";
         if (tabelaNmChavePrimaria.getText() != null && !tabelaNmChavePrimaria.getText().isEmpty()) {
-            retorno += "        if ((nvl(:old." + tabelaNmChavePrimaria.getText() + ", 0) > 0)) then\n"
+            retorno += "        if (UPDATING) then\n"
                     + "                 ds_log_w := CHR(10) || substr('" + nmTabelaTxt.getText() + " Alterações (old/new)= ' || ds_log_w,1,2000);\n"
-                    + "         else\n"
+                    + "         elsif(INSERTING) then\n"
                     + "                 ds_log_w := CHR(10) || substr('" + nmTabelaTxt.getText() + " Criação (old/new)= ' || ds_log_w,1,2000);\n"
                     + "         end if;\n";
         } else {
@@ -1570,7 +1559,18 @@ public class RelaPrincipal extends javax.swing.JFrame {
                 + "	\n"
                 + "         INSERT INTO " + nvl(dsNomeTabelaTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeTabelaTabelaLog + "_seq.nextval,('" + getNomeTrigger() + " '" + "|| ds_log_w ), (ds_stack_w), ('" + getNomeTrigger() + "') ,sysdate);\n"
                 + "     end if;\n";
+        
+        if (cbIeIncluirDeleteRegistros.isSelected()) {
+            retorno += "\n     if(DELETING) then \n"
+                    + "          ds_log_w := CHR(10) || substr('" + nmTabelaTxt.getText() + " Exclusão = ' || ds_log_w,1,2000);";
 
+            if (tabelaNmChavePrimaria.getText() != null && !tabelaNmChavePrimaria.getText().isEmpty()) {
+                retorno
+                        += "\n          ds_log_w := substr(ds_log_w || ' " + tabelaNmChavePrimaria.getText() + ": ('||:old." + tabelaNmChavePrimaria.getText() + "|| ');',1,2000);\n";
+            }
+            retorno +=  "         INSERT INTO " + nvl(dsNomeTabelaTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeTabelaTabelaLog + "_seq.nextval,('" + getNomeTrigger() + " '" + "|| ds_log_w ), (ds_stack_w), ('" + getNomeTrigger() + "') ,sysdate);\n";
+            retorno += "     end if;\n";
+        }
         return retorno;
     }
 
@@ -1587,6 +1587,5 @@ public class RelaPrincipal extends javax.swing.JFrame {
     private String getNomeTrigger() {
         return nvl(nmTriggerTxt.getText(), "NomeTabelaVazia");
     }
- 
 
 }
