@@ -341,7 +341,7 @@
                 <Component class="javax.swing.JList" name="objetoListaVariaveis">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.AbstractListModel() {&#xa;    String variaveis[] = objetoListaAtributos.toArray(new String[0]);&#xa;    //nomeObjetos.toArray(new String[objetoListaAtributos.size()]);&#xa;    public int getSize() { return variaveis.length; }&#xa;    public Object getElementAt(int i) { return variaveis[i]; }&#xa;}" type="code"/>
+                      <Connection code="new javax.swing.AbstractListModel() {&#xa;    String variaveis[] =  {};&#xa;    //nomeObjetos.toArray(new String[objetoListaAtributos.size()]);&#xa;    public int getSize() { return variaveis.length; }&#xa;    public Object getElementAt(int i) { return variaveis[i]; }&#xa;}" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -709,13 +709,6 @@
                                               <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="nmTriggerTxt" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="tabelaTxtChavePrimaria" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="tabelaJrBMaskCompleta" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -724,7 +717,7 @@
                                                   <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="tabelaJrbHoras" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="tabelaLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cbIeIncluirDeleteRegistros" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
@@ -808,13 +801,9 @@
                                               <Component id="tabelaJrbHoras" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                               <Component id="jSeparator12" min="-2" pref="10" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                              <Component id="tabelaTxtChavePrimaria" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                              <Component id="cbIeIncluirDeleteRegistros" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                               <Component id="jSeparator8" min="-2" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
@@ -940,7 +929,7 @@
                 <Component class="javax.swing.JList" name="tabelaListaVariaveis">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.AbstractListModel() {&#xa;    String variaveis[] = objetoListaAtributos.toArray(new String[0]);&#xa;    //nomeObjetos.toArray(new String[objetoListaAtributos.size()]);&#xa;    public int getSize() { return variaveis.length; }&#xa;    public Object getElementAt(int i) { return variaveis[i]; }&#xa;}" type="code"/>
+                      <Connection code="new javax.swing.AbstractListModel() {&#xa;    String variaveis[]  =  {};&#xa;    //nomeObjetos.toArray(new String[objetoListaAtributos.size()]);&#xa;    public int getSize() { return variaveis.length; }&#xa;    public Object getElementAt(int i) { return variaveis[i]; }&#xa;}" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1067,18 +1056,6 @@
                 <Property name="text" type="java.lang.String" value="(Deixar vazio em caso de v&#xe1;rias PKS)"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tabelaTxtChavePrimaria">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel23">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="(Vazio para nada)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel24">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cair apenas quando a chave prim&#xe1;ria for:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="tabelaLabel1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nome da Trigger, EX: Temp_Trigg_SO2044"/>
@@ -1126,6 +1103,15 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nome da chave prim&#xe1;ria"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbIeIncluirDeleteRegistros">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Incluir delete de registros"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbIeIncluirDeleteRegistrosActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
