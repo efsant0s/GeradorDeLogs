@@ -1364,10 +1364,10 @@ public class RelaPrincipal extends javax.swing.JFrame {
     }
 
     private void objetoRemoveVariavel() {
-        int index = objetoListaVariaveis.getSelectedIndex();
-        if (index > -1) {
+        String valor = (String)  objetoListaVariaveis.getSelectedValue();
+        if (valor != null) {
             if (JOptionPane.showConfirmDialog(null, "Deseja realmente remover essa variável?") == JOptionPane.YES_OPTION) {
-                this.objetoListaAtributos.remove(index);
+                this.objetoListaAtributos.remove(valor);
                 objetoAtualizaLista();
             }
         }
@@ -1380,7 +1380,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
         for (Map.Entry<String, String> entry : objetoListaAtributos.entrySet()) {
             String val = entry.getValue();
             String key = entry.getKey();
-            vars += " || '| " + atualizaAspasOracle(key) + ": ' || " + (val.equals("Date") ? objetoMontaValor(key) : val) + quebraLinha;
+            vars += " || '| " + atualizaAspasOracle(key) + ": ' || " + (val.equals("Date") ? objetoMontaValor(key) : key) + quebraLinha;
 
         }
 
