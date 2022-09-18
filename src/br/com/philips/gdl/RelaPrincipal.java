@@ -1102,13 +1102,13 @@ public class RelaPrincipal extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        BasicLookAndFeel darcula = new DarculaLaf();
-        try {
-            UIManager.setLookAndFeel(darcula);
-            //</editor-fold>
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(RelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //BasicLookAndFeel darcula = new DarculaLaf();
+//        try {
+//            UIManager.setLookAndFeel(darcula);
+//            //</editor-fold>
+//        } catch (UnsupportedLookAndFeelException ex) {
+//            Logger.getLogger(RelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1123,10 +1123,13 @@ public class RelaPrincipal extends javax.swing.JFrame {
                 tela.tabelaAtualizaLista();
                 tela.itemListaVariavelObjetoSelecionado();
                 tela.itemListaVariavelTabelaSelecionado();
-                URL url = System.class.getResource("/br/com/philips/gdl/log.png");
+
                 try {
-                    java.awt.Image image = ImageIO.read(url);
-                    tela.setIconImage(image);
+                    URL url = System.class.getResource("/br/com/philips/gdl/log.png");
+                    if (url != null) {
+                        java.awt.Image image = ImageIO.read(url);
+                        tela.setIconImage(image);
+                    }
                 } catch (IOException ex) {
                     Logger.getLogger(RelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1364,7 +1367,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
     }
 
     private void objetoRemoveVariavel() {
-        String valor = (String)  objetoListaVariaveis.getSelectedValue();
+        String valor = (String) objetoListaVariaveis.getSelectedValue();
         if (valor != null) {
             if (JOptionPane.showConfirmDialog(null, "Deseja realmente remover essa variável?") == JOptionPane.YES_OPTION) {
                 this.objetoListaAtributos.remove(valor);
@@ -1559,7 +1562,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
                 + "	\n"
                 + "         INSERT INTO " + nvl(dsNomeTabelaTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeTabelaTabelaLog + "_seq.nextval,('" + getNomeTrigger() + " '" + "|| ds_log_w ), (ds_stack_w), ('" + getNomeTrigger() + "') ,sysdate);\n"
                 + "     end if;\n";
-        
+
         if (cbIeIncluirDeleteRegistros.isSelected()) {
             retorno += "\n     if(DELETING) then \n"
                     + "          ds_log_w := CHR(10) || substr('" + nmTabelaTxt.getText() + " Exclusão = ' || ds_log_w,1,2000);";
@@ -1568,7 +1571,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
                 retorno
                         += "\n          ds_log_w := substr(ds_log_w || ' " + tabelaNmChavePrimaria.getText() + ": ('||:old." + tabelaNmChavePrimaria.getText() + "|| ');',1,2000);\n";
             }
-            retorno +=  "         INSERT INTO " + nvl(dsNomeTabelaTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeTabelaTabelaLog + "_seq.nextval,('" + getNomeTrigger() + " '" + "|| ds_log_w ), (ds_stack_w), ('" + getNomeTrigger() + "') ,sysdate);\n";
+            retorno += "         INSERT INTO " + nvl(dsNomeTabelaTabelaLog, "NOME_TABELA_VAZIA") + " VALUES (" + dsNomeTabelaTabelaLog + "_seq.nextval,('" + getNomeTrigger() + " '" + "|| ds_log_w ), (ds_stack_w), ('" + getNomeTrigger() + "') ,sysdate);\n";
             retorno += "     end if;\n";
         }
         return retorno;
