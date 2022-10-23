@@ -203,7 +203,7 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane3" pref="315" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane3" pref="321" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -678,7 +678,7 @@
                                                           </Group>
                                                           <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -692,7 +692,7 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="99" pref="100" max="32767" attributes="0"/>
+                                                      <EmptySpace min="99" pref="108" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -724,9 +724,13 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="tabelaBtGerarTrigger" min="-2" pref="121" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="tabelaBtGerarTrigger" min="-2" pref="121" max="-2" attributes="0"/>
+                                  <Component id="tabelaBtGerarTrigger1" min="-2" pref="121" max="-2" attributes="0"/>
+                                  <Component id="tabelaBtGerarTrigger2" min="-2" pref="121" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane9" min="-2" pref="787" max="-2" attributes="0"/>
                                   <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
@@ -785,7 +789,7 @@
                                                       <EmptySpace max="32767" attributes="0"/>
                                                       <Component id="tabelaBtDescerVariavel" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="jScrollPane7" pref="214" max="32767" attributes="0"/>
+                                                  <Component id="jScrollPane7" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
@@ -821,9 +825,9 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="txtTabelaVariavelTextoCondicao" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="tabelaNmTabelaLog" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="tabelaBtAtualiza" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -835,9 +839,15 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane10" pref="119" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane10" pref="152" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="tabelaBtGerarTrigger" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="tabelaBtGerarTrigger1" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tabelaBtGerarTrigger2" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tabelaBtGerarTrigger" min="-2" pref="95" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -999,7 +1009,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="tabelaBtGerarTrigger">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gerar Trigger!"/>
+                <Property name="text" type="java.lang.String" value="Carregar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tabelaBtGerarTriggerActionPerformed"/>
@@ -1111,6 +1121,22 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbIeIncluirDeleteRegistrosActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="tabelaBtGerarTrigger1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gerar Trigger!"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tabelaBtGerarTrigger1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="tabelaBtGerarTrigger2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salvar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tabelaBtGerarTrigger2ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

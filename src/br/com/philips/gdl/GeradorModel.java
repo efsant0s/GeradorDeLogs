@@ -27,7 +27,10 @@ public class GeradorModel {
     private boolean ie_objeto_stacktrace;
     private boolean ie_objeto_ds_comando;
     private String ds_objeto_deletar_script;
-
+    
+    
+    
+    
     private String ds_tabela_nome_tabela;
     private String ds_tabela_nm_trigger_gerada;
     private String ds_tabela_script_trigger;
@@ -248,6 +251,13 @@ public class GeradorModel {
     public void setDs_tabela_deletar_script(String ds_tabela_deletar_script) {
         this.ds_tabela_deletar_script = ds_tabela_deletar_script;
     }
+
+    @Override
+    public String toString() {
+        return "GeradorModel{" + "ds_objeto_nome_objeto=" + ds_objeto_nome_objeto + ", ds_objeto_script_original=" + ds_objeto_script_original + ", ds_objeto_script_saida=" + ds_objeto_script_saida + ", ds_objeto_nome_tabela_log=" + ds_objeto_nome_tabela_log + ", ds_objeto_script_tabela_log=" + ds_objeto_script_tabela_log + ", lt_objeto_lista_variaveis=" + lt_objeto_lista_variaveis + ", ds_objeto_mascara_data=" + ds_objeto_mascara_data + ", ds_objeto_if_variavel=" + ds_objeto_if_variavel + ", ds_objeto_then_variavel=" + ds_objeto_then_variavel + ", ie_objeto_quebra_linha=" + ie_objeto_quebra_linha + ", ie_objeto_commit_insert=" + ie_objeto_commit_insert + ", ie_objeto_stacktrace=" + ie_objeto_stacktrace + ", ie_objeto_ds_comando=" + ie_objeto_ds_comando + ", ds_objeto_deletar_script=" + ds_objeto_deletar_script + '}';
+    }
+
+   
     
     
 }

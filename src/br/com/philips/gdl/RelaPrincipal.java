@@ -31,7 +31,7 @@ import javax.swing.plaf.basic.BasicLookAndFeel;
  */
 public class RelaPrincipal extends javax.swing.JFrame {
 
-    GeradorModel modelo = new GeradorModel();
+    static GeradorModel modelo = new GeradorModel();
 
     /**
      * Creates new form telaPrincipal
@@ -187,6 +187,8 @@ public class RelaPrincipal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         cbIeIncluirDeleteRegistros = new javax.swing.JCheckBox();
+        tabelaBtGerarTrigger1 = new javax.swing.JButton();
+        tabelaBtGerarTrigger2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerador de logs");
@@ -209,7 +211,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
         });
 
         objetoBtRemoveVariavel.setText("-");
-		objetoBtRemoveVariavel.addActionListener(new java.awt.event.ActionListener() {
+        objetoBtRemoveVariavel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 objetoBtRemoveVariavelActionPerformed(evt);
             }
@@ -481,7 +483,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel6)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(objetoBtnGerar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -642,7 +644,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
 
             tabelaLabel.setText("Nome da Tabela");
 
-            tabelaBtGerarTrigger.setText("Gerar Trigger!");
+            tabelaBtGerarTrigger.setText("Carregar");
             tabelaBtGerarTrigger.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     tabelaBtGerarTriggerActionPerformed(evt);
@@ -711,6 +713,20 @@ public class RelaPrincipal extends javax.swing.JFrame {
                     }
                 });
 
+                tabelaBtGerarTrigger1.setText("Gerar Trigger!");
+                tabelaBtGerarTrigger1.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        tabelaBtGerarTrigger1ActionPerformed(evt);
+                    }
+                });
+
+                tabelaBtGerarTrigger2.setText("Salvar");
+                tabelaBtGerarTrigger2.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        tabelaBtGerarTrigger2ActionPerformed(evt);
+                    }
+                });
+
                 javax.swing.GroupLayout tbAbaTabelaLayout = new javax.swing.GroupLayout(tbAbaTabela);
                 tbAbaTabela.setLayout(tbAbaTabelaLayout);
                 tbAbaTabelaLayout.setHorizontalGroup(
@@ -759,7 +775,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
                                                                         .addComponent(tabelaBtDescerVariavel)
                                                                         .addGap(1, 1, 1))))
                                                             .addComponent(jLabel25))
-                                                        .addGap(0, 2, Short.MAX_VALUE)))
+                                                        .addGap(0, 0, Short.MAX_VALUE)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                         .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jSeparator12)
@@ -769,7 +785,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
                                                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                                                         .addComponent(jLabel10)
-                                                        .addGap(99, 100, Short.MAX_VALUE))
+                                                        .addGap(99, 108, Short.MAX_VALUE))
                                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
                                                         .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbAbaTabelaLayout.createSequentialGroup()
@@ -790,9 +806,12 @@ public class RelaPrincipal extends javax.swing.JFrame {
                                                     .addComponent(tabelaLabel1)
                                                     .addComponent(cbIeIncluirDeleteRegistros))
                                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                                .addGap(18, 18, 18)
-                                .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(24, 24, 24)
+                                .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tabelaBtGerarTrigger1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tabelaBtGerarTrigger2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel20)))
@@ -839,7 +858,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
                                                         .addComponent(tabelaBtSubirVariavel)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(tabelaBtDescerVariavel))
-                                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
+                                                    .addComponent(jScrollPane7))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel18))
                                             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
@@ -868,8 +887,8 @@ public class RelaPrincipal extends javax.swing.JFrame {
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addComponent(jLabel12)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtTabelaVariavelTextoCondicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtTabelaVariavelTextoCondicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
                                         .addGroup(tbAbaTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(tabelaNmTabelaLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(tabelaBtAtualiza))
@@ -880,8 +899,13 @@ public class RelaPrincipal extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel22)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
-                                    .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                                    .addGroup(tbAbaTabelaLayout.createSequentialGroup()
+                                        .addComponent(tabelaBtGerarTrigger1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tabelaBtGerarTrigger2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tabelaBtGerarTrigger, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(tbAbaTabelaLayout.createSequentialGroup()
                                 .addComponent(tabelaLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -976,6 +1000,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_tabelaBtGerarTriggerActionPerformed
+
 
     private void nmTabelaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nmTabelaTxtActionPerformed
         // TODO add your handling code here:
@@ -1078,7 +1103,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jchboxDsComandoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        preencheInformacoesCampo();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarActionPerformed
@@ -1088,6 +1113,14 @@ public class RelaPrincipal extends javax.swing.JFrame {
     private void cbIeIncluirDeleteRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbIeIncluirDeleteRegistrosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbIeIncluirDeleteRegistrosActionPerformed
+
+    private void tabelaBtGerarTrigger1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabelaBtGerarTrigger1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelaBtGerarTrigger1ActionPerformed
+
+    private void tabelaBtGerarTrigger2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabelaBtGerarTrigger2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelaBtGerarTrigger2ActionPerformed
     private String atualizaAspasOracle(String texto) {
         return nvl(texto, "").replace("'", "''");
     }
@@ -1217,6 +1250,8 @@ public class RelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton tabelaBtAtualiza;
     private javax.swing.JToggleButton tabelaBtDescerVariavel;
     private javax.swing.JButton tabelaBtGerarTrigger;
+    private javax.swing.JButton tabelaBtGerarTrigger1;
+    private javax.swing.JButton tabelaBtGerarTrigger2;
     private javax.swing.JButton tabelaBtRemoveVariavel;
     private javax.swing.JToggleButton tabelaBtSubirVariavel;
     private javax.swing.JTextArea tabelaDsCreateTable;
@@ -1591,4 +1626,36 @@ public class RelaPrincipal extends javax.swing.JFrame {
         return nvl(nmTriggerTxt.getText(), "NomeTabelaVazia");
     }
 
+    private void preencheInformacoesCampo() {
+        if (modelo == null) {
+            modelo = new GeradorModel();
+        }
+
+        modelo.setDs_objeto_nome_objeto(this.dsNomeObjetoTabelaLog);
+        modelo.setDs_objeto_script_original(this.dsScriptOriginal.getText());
+        modelo.setDs_objeto_script_saida(this.objetoDsScriptSaida.getText());
+        modelo.setDs_objeto_nome_tabela_log(this.objetoNmTabelaLog.getText());
+        modelo.setDs_objeto_script_tabela_log((this.objetoDsCreateTable.getText()));
+        modelo.setLt_objeto_lista_variaveis(this.objetoListaAtributos);
+        String maskData = "";
+
+        if (this.objetoJrbMaskCompleta.isSelected()) {
+            maskData = "objetoJrbMaskCompleta";
+        } else if (this.objetoJrbDias.isSelected()) {
+            maskData = "objetoJrbDias";
+        } else if (this.objetoJrbHoras.isSelected()) {
+            maskData = "objetoJrbHoras";
+        }
+
+        modelo.setDs_objeto_mascara_data(maskData);
+        modelo.setDs_objeto_if_variavel(txtVariavelNome.getText());
+        modelo.setDs_objeto_then_variavel(txtVariavelTextoCondicao.getText());
+        modelo.setIe_objeto_quebra_linha(jchboxQuebraLinha.isSelected());
+        modelo.setIe_objeto_commit_insert(jchboxCommitInsert.isSelected());
+        modelo.setIe_objeto_stacktrace(jchboxStackTrace.isSelected());
+        modelo.setIe_objeto_ds_comando(jchboxDsComando.isSelected());
+        modelo.setDs_objeto_deletar_script(objetoDsScriptLimpar.getText());
+        System.out.println(modelo.toString());
+
+    }
 }
