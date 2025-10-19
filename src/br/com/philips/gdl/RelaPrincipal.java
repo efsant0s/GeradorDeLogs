@@ -1102,13 +1102,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        BasicLookAndFeel darcula = new DarculaLaf();
-        try {
-            UIManager.setLookAndFeel(darcula);
-            //</editor-fold>
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(RelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1124,12 +1118,7 @@ public class RelaPrincipal extends javax.swing.JFrame {
                 tela.itemListaVariavelObjetoSelecionado();
                 tela.itemListaVariavelTabelaSelecionado();
                 URL url = System.class.getResource("/br/com/philips/gdl/log.png");
-                try {
-                    java.awt.Image image = ImageIO.read(url);
-                    tela.setIconImage(image);
-                } catch (IOException ex) {
-                    Logger.getLogger(RelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+
 
             }
         });
